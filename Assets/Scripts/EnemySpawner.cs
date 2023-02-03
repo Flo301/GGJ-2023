@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
-
     [SerializeField] GameObject player;
-
-    [SerializeField] float interval = 10f;
-
-    [SerializeField] float minDistance = 10f;
+    [SerializeField] float interval = 3f;
+    [SerializeField] float minDistance = 3f;
+    [SerializeField] float range = 5f;
 
     float delta = .0f;
 
@@ -27,9 +25,9 @@ public class EnemySpawner : MonoBehaviour
             delta = .0f;
             Vector3 pos;
             do {
-                pos = new Vector3(Random.Range(-500, 500), Random.Range(-500, 500));
+                pos = new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range));
             } while (Vector3.Distance(player.transform.position, pos) < minDistance);
-            GameObject enemy = Instantiate(enemyPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
         }
     }
 }
