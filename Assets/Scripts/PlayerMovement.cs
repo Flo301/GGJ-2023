@@ -4,22 +4,37 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10.0f;
-
+    public float movementSpeed = 10.0f;
+    public float rotationSpeed = 10.0f;
+    private Rigidbody PlayerRigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        var horizontalInput = Input.GetAxis("Horizontal") * speed;
-        var verticalInput = Input.GetAxis("Vertical") * speed;
+        var horizontalTranslation = Input.GetAxis("Horizontal") * movementSpeed;
+        var verticalTranslation = Input.GetAxis("Vertical") * movementSpeed;
+        Vector3 moveInput = new Vector3(horizontalTranslation, 0, verticalTranslation);
 
-        transform.Translate(horizontalInput * Time.deltaTime, 0, verticalInput * Time.deltaTime);
+        PlayerRigidbody.MovePosition(transform.position + moveInput * Time.deltaTime);
 
-        ///this.transform.forward = verticalInput * Time.deltaTime
+        var horizontalStickRotation = Input.GetAxis("JoystickRightHorizontal");
+        var verticalStickRotation = Input.GetAxis("JoystickRightVertical");
+        Vector3 stickMovementDirection = new Vector3(horizontalStickRotation, 0, verticalStickRotation);
+        var horizontalMouseRotation = Input.GetAxis("Mouse X");
+        var verticalMouseRotation = Input.GetAxis("Mouse Y");
+        Vector3 mouseMovementDirection = new Vector3(horizontalMouseRotation, 0, verticalMouseRotation);
+
+        if (stickMovementDirection != Vector3.zero)
+        {
+            Quaternion rotation = Quaternion.Slerp(PlayerRigidbody.rotation, Quaternion.LookRotation(stickMovementDirection, Vector3.up), rotationSpeed * Time.deltaTime);
+            PlayerRigidbody.rotation = rotation;
+        }
+
     }
 }
+
