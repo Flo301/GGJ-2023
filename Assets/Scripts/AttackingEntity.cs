@@ -37,7 +37,15 @@ public class AttackingEntity : MonoBehaviour
 
     virtual protected void Die()
     {
-        Destroy(gameObject);
+        if (tag == "Player")
+        {
+            GameManager.Instance.OnPlayerDie();
+        }
+        else
+        {
+            GameManager.Instance.OnEnemyDie();
+            Destroy(gameObject);
+        }
     }
 
     public void Attack()
