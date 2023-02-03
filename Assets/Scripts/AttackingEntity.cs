@@ -6,20 +6,21 @@ public class AttackingEntity : MonoBehaviour
 {
     public AttackData attackData;
     public float HP = 100;
-    public KeyCode attackKey = KeyCode.None;
+    public KeyCode debugAttackKey = KeyCode.None;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private float attackCooldown = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (attackKey != KeyCode.None && Input.GetKeyDown(attackKey))
+        if (debugAttackKey != KeyCode.None && Input.GetKeyDown(debugAttackKey))
         {
             Attack();
+        }
+
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.deltaTime;
         }
     }
 
@@ -39,9 +40,12 @@ public class AttackingEntity : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected void Attack()
+    public void Attack()
     {
+        if (attackCooldown > 0) return;
+
         Debug.Log($"{transform.name} => DoAttack", gameObject);
+        attackCooldown = attackData.Cooldown;
         RaycastHit[] hits = Physics.BoxCastAll(transform.position, Vector3.one * attackData.Range / 2f, transform.forward);
         foreach (var hit in hits)
         {
