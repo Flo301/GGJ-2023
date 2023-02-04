@@ -6383,7 +6383,7 @@ Transform:
   - {fileID: 5580367333172835253}
   - {fileID: 1792413318044059932}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2614282487586835646
 CapsuleCollider:
@@ -6457,6 +6457,7 @@ MonoBehaviour:
   HP: 100
   Resistance: 0
   HpBar: {fileID: 0}
+  StaminarBar: {fileID: 0}
   Weaknesses: []
   attackMask:
     serializedVersion: 2
@@ -6483,27 +6484,27 @@ MonoBehaviour:
     WeaponMesh: {fileID: 7201942719112953413}
     attackData:
       Typ: 1
-      Damage: 50
+      Damage: 30
       Range: 4
-      Cooldown: 0.2
+      Cooldown: 0.5
       ProjectileObj: {fileID: 0}
     uiAttack: {fileID: 0}
   - Name: Throwable
     WeaponMesh: {fileID: 1776981660168711243}
     attackData:
       Typ: 1
-      Damage: 100
+      Damage: 80
       Range: 5
-      Cooldown: 0.4
+      Cooldown: 1
       ProjectileObj: {fileID: 0}
     uiAttack: {fileID: 0}
   - Name: Flare Gun
     WeaponMesh: {fileID: 4931044192788643432}
     attackData:
       Typ: 3
-      Damage: 200
-      Range: 3
-      Cooldown: 0.6
+      Damage: 10
+      Range: 2
+      Cooldown: 0.2
       ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
     uiAttack: {fileID: 0}
   - Name: Flame Thrower
