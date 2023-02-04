@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4826134453608019172}
   - component: {fileID: 4826134453608019173}
   - component: {fileID: 4826134453608019171}
+  - component: {fileID: 425523196098991112}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db1aeec0ec6ba80b8b4c9ef05a4b24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthSpeed: 0.1
+  growthSpeed: 0
   max: 2
 --- !u!135 &4826134453608019171
 SphereCollider:
@@ -69,6 +70,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &425523196098991112
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826134453608019174}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 642d91923b7814696b68a048aff643c8, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 642d91923b7814696b68a048aff643c8, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4826134454353968988
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +97,7 @@ GameObject:
   - component: {fileID: 4826134454353968987}
   - component: {fileID: 4826134454353968984}
   - component: {fileID: 4826134454353968985}
-  - component: {fileID: 4826134454353968986}
+  - component: {fileID: 8959871648316877015}
   - component: {fileID: 7392223286711834289}
   m_Layer: 3
   m_Name: Mesh
@@ -154,8 +171,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4826134454353968986
-SphereCollider:
+--- !u!136 &8959871648316877015
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -172,9 +189,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &7392223286711834289
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,15 +14,17 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         mesh = transform.GetChild(0);
-        mesh.localScale = new Vector3(growth, growth, growth);
+        //mesh.localScale = new Vector3(growth, growth, growth);
         ae = mesh.GetComponent<AttackingEntity>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        growth = Mathf.Min(growth + Time.deltaTime * growthSpeed, max);
-        mesh.localScale = new Vector3(growth, growth, growth);
+        //use unity animator :D
+
+        //growth = Mathf.Min(growth + Time.deltaTime * growthSpeed, max);
+        //mesh.localScale = new Vector3(growth, growth, growth);
     }
 
     void OnTriggerStay(Collider collision)
