@@ -30,7 +30,8 @@ public class Player : MonoBehaviour
     void Movement()
     {
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        PlayerRigidbody.MovePosition(transform.position + moveDirection.normalized * movementSpeed * Time.deltaTime);
+        if (moveDirection.sqrMagnitude > 1) moveDirection = moveDirection.normalized;
+        PlayerRigidbody.MovePosition(transform.position + moveDirection * movementSpeed * Time.deltaTime);
 
         Vector3 rotationDirection = new Vector3(Input.GetAxis("JoystickRightHorizontal"), 0, Input.GetAxis("JoystickRightVertical"));
 
