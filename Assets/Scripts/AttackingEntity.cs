@@ -11,6 +11,7 @@ public class AttackingEntity : MonoBehaviour
     public GameObject parent;
     public KeyCode debugAttackKey = KeyCode.None;
 
+    private InfestionSpot infestationSpot;
     private float attackCooldown = 0f;
 
     // Update is called once per frame
@@ -27,10 +28,26 @@ public class AttackingEntity : MonoBehaviour
         }
     }
 
+    public void SetInfestationSpot(InfestionSpot _spot)
+    {
+        infestationSpot = _spot;
+    }
+
     public void TakeDamage(AttackData attack)
     {
         // Debug.Log($"{transform.name} => DMG:{attack.Damage} HP:{HP}", gameObject);
-        HP -= attack.Damage;
+        TakeDamage(attack.Damage);
+    }
+
+    public void TakeDamage(float value)
+    {
+        SetHp(HP - value);
+    }
+
+    private void SetHp(float hp)
+    {
+        HP = Mathf.Min(hp, maxHP);
+
         if (HpBar != null)
             HpBar.setHP(HP / maxHP);
 
@@ -42,6 +59,11 @@ public class AttackingEntity : MonoBehaviour
 
     virtual protected void Die()
     {
+        if (infestationSpot != null)
+        {
+            infestationSpot.OnEntityDie(this);
+        }
+
         if (tag == "Player")
         {
             GameManager.Instance.OnPlayerDie();
