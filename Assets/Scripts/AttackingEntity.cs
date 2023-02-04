@@ -35,7 +35,7 @@ public class AttackingEntity : MonoBehaviour
         float WeaknessFactor = getWeakness(attack.Typ).Factor;
         float ResistanceFactor = 1 - Mathf.Clamp(Resistance, 0, 1);
         float Damage = attack.Damage * WeaknessFactor * ResistanceFactor;
-        Debug.Log($"{attack.Damage} * {WeaknessFactor} * {ResistanceFactor} => {Damage}");
+        //Debug.Log($"{attack.Damage} * {WeaknessFactor} * {ResistanceFactor} => {Damage}");
         HP -= Damage;
 
         if (HpBar != null)
