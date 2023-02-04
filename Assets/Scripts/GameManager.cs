@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Controller = false;
+        Controller = true;
         Application.targetFrameRate = 60; //Flo's Laptop sucks...
 
         if (Instance != null)
