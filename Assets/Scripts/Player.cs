@@ -6,15 +6,14 @@ public class Player : MonoBehaviour
 {
     public float movementSpeed = 10.0f;
     public float rotationSpeed = 10.0f;
-
-    public Light SpotLight;
+    public Light SpotLight;    
     private Rigidbody PlayerRigidbody;
     public AttackingEntity AttackingEntity { get; private set; }
     public List<PlayerAttack> AttackData;
     private Color AttackBaseColor;
+    public GameObject Ground;
     private int AttackNumber;
     private Animator PlayerAnimator;
-    public GameObject Ground;
     private PlayerAttack selectedAttack;
 
     void Awake()
@@ -48,7 +47,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckSelectedWeapon();
+        CheckSelectedAttack();
         CheckWeapon();
 
         if (Input.GetButtonDown("Jump"))
@@ -73,6 +72,8 @@ public class Player : MonoBehaviour
 
         Movement();
     }
+
+    
 
     void CheckWeapon()
     {
@@ -144,52 +145,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*     void CheckSelectedAttack()
-        {
-            var _attackNumber = AttackNumber;
-            if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetButtonDown("NextWeapon"))
-            {
-                _attackNumber = (AttackNumber + 1);
-            }
-            if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetButtonDown("PrevWeapon"))
-            {
-                _attackNumber = (AttackNumber - 1);
-            }
-            if (_attackNumber < AttackData.Length && _attackNumber >= 0)
-            {
-                foreach (var attackData in AttackData)
-                {
-                    Image img = attackData.uiAttack.GetComponent<Image>();
-                    if (null != img)
-                    {
-                        img.color = AttackBaseColor;
-                    }
 
-                    if (!attackData.isUnlocked)
-                    {
-                        attackData.uiAttack.GetComponent<Image>().color = new Color32(165, 0, 0, 255);
-                    }
-
-                    attackData.WeaponMesh.SetActive(false);
-                }
-
-                AttackNumber = _attackNumber;
-
-
-                selectedAttack = AttackData[AttackNumber];
-
-                AttackingEntity.selectedAttack = selectedAttack.attackData;
-
-                selectedAttack.WeaponMesh.SetActive(true);
-                selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
-
-                SpotLight.range = AttackingEntity.selectedAttack.Range;
-            }
-        } */
-
-    void CheckSelectedWeapon()
+    void CheckSelectedAttack()
     {
-        var availableWeapons = new List<PlayerAttack>();
+        var availableAttacks = new List<PlayerAttack>();
 
         foreach (var attack in AttackData)
         {
@@ -201,7 +160,7 @@ public class Player : MonoBehaviour
 
             if (attack.isUnlocked)
             {
-                availableWeapons.Add(attack);
+                availableAttacks.Add(attack);
             }
             else
             {
@@ -213,10 +172,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetButtonDown("NextWeapon"))
         {
-            if (AttackNumber + 1 < availableWeapons.Count)
+            if (AttackNumber + 1 < availableAttacks.Count)
             {
                 AttackNumber = AttackNumber + 1;
-                selectedAttack = availableWeapons[AttackNumber];
+                selectedAttack = availableAttacks[AttackNumber];
             }
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetButtonDown("PrevWeapon"))
@@ -224,7 +183,7 @@ public class Player : MonoBehaviour
             if (AttackNumber - 1 >= 0)
             {
                 AttackNumber = AttackNumber - 1;
-                selectedAttack = availableWeapons[AttackNumber];
+                selectedAttack = availableAttacks[AttackNumber];
             }
         }
 

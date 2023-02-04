@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,9 @@ public class GameManager : MonoBehaviour
 
     public Text[] killCounts;
     public TMPro.TMP_Text WaveIntroText;
-    public RectTransform gameOverScreen;
-    public RectTransform shopScreen;
+    public Text MoneyText;
+    public GameObject GameOver;
+    public GameObject Shop;
     public bool Controller = false;
     public WaveData[] WaveData;
 
@@ -44,7 +46,8 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         Time.timeScale = 1;
 
-        gameOverScreen.gameObject.SetActive(false);
+        GameOver.gameObject.SetActive(false);
+        Shop.gameObject.SetActive(false);
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         //GAME_OVER
         Time.timeScale = 0;
-        gameOverScreen.gameObject.SetActive(true);
+        GameOver.SetActive(true);
     }
 
     public void OnEnemyDie(AttackingEntity _enemy)
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviour
         Money += leftHp;
 
         //Open-Shop
-        shopScreen.gameObject.SetActive(true);
+        Shop.SetActive(true);
     }
 
     public void StartNextWave()
