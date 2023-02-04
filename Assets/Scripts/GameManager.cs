@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         Time.timeScale = 1;
 
-        GameOver.gameObject.SetActive(false);
-        Shop.gameObject.SetActive(false);
+        GameOver.SetActive(false);
+        Shop.SetActive(false);
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         //Make-Money
         var leftHp = (int)Player.AttackingEntity.HP;
         Money += leftHp;
+        MoneyText.text = $"Money: {Money}";
 
         //Open-Shop
         Shop.SetActive(true);
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
     public void StartNextWave()
     {
         CurrentWave++;
+        Shop.SetActive(false);
         StartWave(CurrentWave);
     }
 
