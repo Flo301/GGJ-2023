@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
         //Get Base Data
         AttackNumber = 0;
         selectedAttack = AttackData[AttackNumber];
+        AttackingEntity.selectedAttack = selectedAttack.attackData;
         AttackBaseColor = AttackData[AttackNumber].uiAttack.GetComponent<Image>().color;
 
         //Set Init Data
@@ -225,6 +226,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        AttackingEntity.selectedAttack = selectedAttack.attackData;
         selectedAttack.WeaponMesh.SetActive(true);
         selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
 
