@@ -53,13 +53,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            AttackingEntity.Attack();
-            PlayerAnimator.SetTrigger("Fire");
+            PlayerAnimator.SetBool("Rapid Fire", true);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            PlayerAnimator.SetBool("Rapid Fire", true);
+            AttackingEntity.Attack();
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -74,7 +73,6 @@ public class Player : MonoBehaviour
     {
         if (selectedAttack.Name == "Meele")
         {
-
             PlayerAnimator.SetBool("Meele Short", true);
             PlayerAnimator.SetBool("Throwable", false);
             PlayerAnimator.SetBool("Trigger Single", false);
