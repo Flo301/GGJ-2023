@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
         Vector3 rotationDirection = new Vector3(Input.GetAxis("JoystickRightHorizontal"), 0, Input.GetAxis("JoystickRightVertical"));
 
-        if (rotationDirection == Vector3.zero)
+        if (!GameManager.Instance.Controller)
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
             {
