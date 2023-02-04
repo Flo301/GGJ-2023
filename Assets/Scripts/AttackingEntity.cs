@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackingEntity : MonoBehaviour
@@ -28,8 +26,7 @@ public class AttackingEntity : MonoBehaviour
 
     public void TakeDamage(AttackData attack)
     {
-        Debug.Log($"{transform.name} => DMG:{attack.Damage} HP:{HP}", gameObject);
-        
+        // Debug.Log($"{transform.name} => DMG:{attack.Damage} HP:{HP}", gameObject);
         HP -= attack.Damage;
         if (HpBar != null)
             HpBar.setHP(HP / maxHP);
@@ -57,7 +54,7 @@ public class AttackingEntity : MonoBehaviour
     {
         if (attackCooldown > 0) return;
 
-        Debug.Log($"{transform.name} => DoAttack", gameObject);
+        // Debug.Log($"{transform.name} => DoAttack", gameObject);
         attackCooldown = attackData.Cooldown;
         RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, attackData.Range), transform.forward, Quaternion.identity, attackData.Range);
         foreach (var hit in hits)
