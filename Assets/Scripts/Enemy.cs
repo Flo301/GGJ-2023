@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ae = GetComponent<AttackingEntity>();
+        ae = transform.GetChild(0).GetComponent<AttackingEntity>();
     }
 
     // Update is called once per frame
