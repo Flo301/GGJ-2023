@@ -69,6 +69,17 @@ public class AttackingEntity : MonoBehaviour
             case EAttackTyp.Radial:
                 hits = Physics.SphereCastAll(transform.position, attackData.Range, Vector3.one, .1f, attackMask);
                 break;
+            case EAttackTyp.Projectile:
+                if (attackData.ProjectileObj == null)
+                {
+                    Debug.LogError("Missing Projectile");
+                    return;
+                }
+                var projectile = GameObject.Instantiate(attackData.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
+                projectile.Set(attackData, this);
+                projectile.transform.LookAt(projectile.transform.position + transform.forward);
+                Destroy(projectile.gameObject, attackData.Range);
+                return;
         }
 
         if (hits == null) return;
