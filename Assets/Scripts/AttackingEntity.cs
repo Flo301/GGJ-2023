@@ -8,6 +8,7 @@ public class AttackingEntity : MonoBehaviour
     public float HP = 0;
     public float Resistance = 0;
     public HpBar HpBar;
+    public HpBar StaminarBar;
     public List<WeaknessData> Weaknesses = new List<WeaknessData>();
 
     public LayerMask attackMask;
@@ -28,6 +29,8 @@ public class AttackingEntity : MonoBehaviour
         if (attackCooldown > 0)
         {
             attackCooldown -= Time.deltaTime;
+            if (StaminarBar != null)
+                StaminarBar.setHP(1 - (attackCooldown / selectedAttack.Cooldown));
         }
     }
 
@@ -41,8 +44,7 @@ public class AttackingEntity : MonoBehaviour
         float WeaknessFactor = getWeakness(attack.Typ).Factor;
         float ResistanceFactor = 1 - Mathf.Clamp(Resistance, 0, 1);
         float Damage = attack.Damage * WeaknessFactor * ResistanceFactor;
-        //Debug.Log($"{attack.Damage} * {WeaknessFactor} * {ResistanceFactor} => {Damage}");
-        HP -= Damage;
+        // Debug.Log($"{attack.Damage} * {WeaknessFactor} * {ResistanceFactor} => {Damage}");
 
         // Debug.Log($"{transform.name} => DMG:{Damage} HP:{HP}", gameObject);
         TakeDamage(Damage);

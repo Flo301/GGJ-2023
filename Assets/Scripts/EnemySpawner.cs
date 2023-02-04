@@ -7,15 +7,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject player;
     [SerializeField] float interval = 3f;
-    [SerializeField] float minDistance = 3f;
-    [SerializeField] float range = 5f;
+    [SerializeField] float minDistanceFromPlayer = 7f;
+    [SerializeField] float range = 50f;
 
     float delta = .0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
@@ -23,11 +18,16 @@ public class EnemySpawner : MonoBehaviour
         delta += Time.deltaTime;
         if (delta > interval) {
             delta = .0f;
-            Vector3 pos;
+            Vector3 position;
             do {
-                pos = new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range));
-            } while (Vector3.Distance(player.transform.position, pos) < minDistance);
-            GameObject enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
+                position = new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range));
+            } while (!isValidPosition(position));
+            GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
         }
+    }
+
+    bool isValidPosition(Vector3 position)
+    {
+        return Vector3.Distance(player.transform.position, position) > minDistanceFromPlayer;
     }
 }
