@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackingEntity : MonoBehaviour
 {
-    public AttackData attackData;
+    public AttackData selectedAttack;
     public float maxHP = 100;
     public float HP = 100;
     public HpBar HpBar;
@@ -56,17 +56,17 @@ public class AttackingEntity : MonoBehaviour
     public void Attack()
     {
         if (attackCooldown > 0) return;
-        attackCooldown = attackData.Cooldown;
+        attackCooldown = selectedAttack.Cooldown;
         // Debug.Log($"{transform.name} => DoAttack", gameObject);
 
         RaycastHit[] hits = null;
-        switch (attackData.Typ)
+        switch (selectedAttack.Typ)
         {
             case EAttackTyp.Close:
-                hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, attackData.Range), transform.forward, Quaternion.identity, attackData.Range, attackMask);
+                hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, selectedAttack.Range), transform.forward, Quaternion.identity, selectedAttack.Range, attackMask);
                 break;
             case EAttackTyp.Radial:
-                hits = Physics.SphereCastAll(transform.position, attackData.Range, Vector3.one, .1f, attackMask);
+                hits = Physics.SphereCastAll(transform.position, selectedAttack.Range, Vector3.one, .1f, attackMask);
                 break;
         }
 
@@ -77,7 +77,7 @@ public class AttackingEntity : MonoBehaviour
             var entity = hit.transform.GetComponent<AttackingEntity>();
             if (entity != null && entity != this)
             {
-                entity.TakeDamage(attackData);
+                entity.TakeDamage(selectedAttack);
             }
         }
     }
