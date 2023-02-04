@@ -49,14 +49,19 @@ public class Player : MonoBehaviour
             PlayerAnimator.SetTrigger("Flipping Bird");
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             AttackingEntity.Attack();
             PlayerAnimator.SetTrigger("Fire");
-
         }
 
-        PlayerAnimator.SetBool("Rapid Fire", Input.GetButton("Fire1"));
+        if (Input.GetButtonDown("Fire1")) {
+            PlayerAnimator.SetBool("Rapid Fire", true);
+        }
+
+        if (Input.GetButtonUp("Fire1")) {
+            PlayerAnimator.SetBool("Rapid Fire", false);
+        }
 
         Movement();
     }
