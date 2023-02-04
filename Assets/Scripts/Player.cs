@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerAttack[] AttackData;
     private Color AttackBaseColor;
     private int AttackNumber;
+    private Animator PlayerAnimator;
     public GameObject Ground;
 
     // Start is called before the first frame update
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     {
         PlayerRigidbody = GetComponent<Rigidbody>();
         AttackingEntity = GetComponent<AttackingEntity>();
+        PlayerAnimator = GetComponent<Animator>();
+        PlayerAnimator.SetBool("Walking", false);
 
         //Get Base Data
         AttackNumber = 0;
@@ -46,6 +49,9 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (moveDirection.sqrMagnitude > 1) moveDirection = moveDirection.normalized;
         PlayerRigidbody.MovePosition(transform.position + moveDirection * movementSpeed * Time.deltaTime);
+
+        PlayerAnimator.SetBool("Walking", PlayerRigidbody.velocity.magnitude > 0);
+
 
         Vector3 rotationDirection = new Vector3(Input.GetAxis("JoystickRightHorizontal"), 0, Input.GetAxis("JoystickRightVertical"));
 
@@ -89,18 +95,17 @@ public class Player : MonoBehaviour
         }
         if (_attackNumber < AttackData.Length && _attackNumber >= 0)
         {
-            foreach (var attackData in AttackData) {
+            foreach (var attackData in AttackData)
+            {
                 Image img = attackData.uiAttack.GetComponent<Image>();
-                if (null != img) {
+                if (null != img)
+                {
                     img.color = AttackBaseColor;
                 }
             }
 
             AttackingEntity.selectedAttack = AttackData[_attackNumber].attackData;
-            AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190); 
-            if (AttackingEntity.selectedAttack.Typ == EAttackTyp.Radial) {
-                SpotLight.spotAngle = 360;
-            }
+            AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
             SpotLight.range = AttackingEntity.selectedAttack.Range;
             AttackNumber = _attackNumber;
         }
