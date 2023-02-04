@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4826134454353968987}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4826134453608019173
 MonoBehaviour:
@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db1aeec0ec6ba80b8b4c9ef05a4b24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthSpeed: 0
-  max: 2
 --- !u!135 &4826134453608019171
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -214,9 +212,13 @@ MonoBehaviour:
     Range: 4
     Cooldown: 0.7
     ProjectileObj: {fileID: 0}
-  maxHP: 100
-  HP: 100
+  maxHP: 50
+  HP: 50
+  Resistance: 0
   HpBar: {fileID: 0}
+  Weaknesses:
+  - Type: 3
+    Factor: 1.5
   attackMask:
     serializedVersion: 2
     m_Bits: 64

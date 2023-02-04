@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8123282904047288293
 MeshFilter:
@@ -103,3 +103,6 @@ MonoBehaviour:
   RewardObject: {fileID: 7861237161613613369, guid: e7485eaa41cf73134bfb16d3db584986, type: 3}
   minRewardAmount: 2
   maxRewardAmount: 4
+  Player: {fileID: 0}
+  triggerDistance: 0
+  forceSpawnTime: 30

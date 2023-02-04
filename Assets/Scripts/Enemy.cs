@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    float growth = .0f;
-    [SerializeField] float growthSpeed = .1f;
-    [SerializeField] float max = 5f;
     AttackingEntity ae;
     Transform mesh;
 
@@ -14,21 +11,22 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         mesh = transform.GetChild(0);
-        //mesh.localScale = new Vector3(growth, growth, growth);
         ae = mesh.GetComponent<AttackingEntity>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //use unity animator :D
-
-        //growth = Mathf.Min(growth + Time.deltaTime * growthSpeed, max);
-        //mesh.localScale = new Vector3(growth, growth, growth);
     }
 
     void OnTriggerStay(Collider collision)
     {
         ae.Attack();
+    }
+
+    void Harden()
+    {
+        WeaknessData projectileWeakness = ae.getWeakness(EAttackTyp.Projectile);
+        projectileWeakness.Factor = 0.5f;
     }
 }
