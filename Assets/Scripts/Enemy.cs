@@ -24,6 +24,12 @@ public class Enemy : MonoBehaviour
 
     void Harden()
     {
+        WeaknessData projectileWeakness = ae.getWeakness(EAttackTyp.Close);
+        projectileWeakness.Factor = 1f;
+    }
+
+    void BecomeFireResistant()
+    {
         WeaknessData projectileWeakness = ae.getWeakness(EAttackTyp.Projectile);
         projectileWeakness.Factor = 0.5f;
     }
