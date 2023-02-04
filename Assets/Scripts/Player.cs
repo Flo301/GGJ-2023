@@ -90,7 +90,10 @@ public class Player : MonoBehaviour
         if (_attackNumber < AttackData.Length && _attackNumber >= 0)
         {
             foreach (var attackData in AttackData) {
-                attackData.uiAttack.GetComponent<Image>().color = AttackBaseColor;
+                Image img = attackData.uiAttack.GetComponent<Image>();
+                if (null != img) {
+                    img.color = AttackBaseColor;
+                }
             }
 
             AttackingEntity.selectedAttack = AttackData[_attackNumber].attackData;
