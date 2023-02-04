@@ -141,11 +141,11 @@ public class Player : MonoBehaviour
     void CheckSelectedAttack()
     {
         var _attackNumber = AttackNumber;
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetButtonDown("NextWeapon"))
         {
             _attackNumber = (AttackNumber + 1);
         }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetButtonDown("PrevWeapon"))
         {
             _attackNumber = (AttackNumber - 1);
         }
