@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AttackingEntity : MonoBehaviour
 {
-    public AttackData attackData;
+    public AttackData selectedAttack;
     public float maxHP = 100;
     public float HP = 100;
     public HpBar HpBar;
@@ -78,28 +78,28 @@ public class AttackingEntity : MonoBehaviour
     public void Attack()
     {
         if (attackCooldown > 0) return;
-        attackCooldown = attackData.Cooldown;
+        attackCooldown = selectedAttack.Cooldown;
         // Debug.Log($"{transform.name} => DoAttack", gameObject);
 
         RaycastHit[] hits = null;
-        switch (attackData.Typ)
+        switch (selectedAttack.Typ)
         {
             case EAttackTyp.Close:
-                hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, attackData.Range), transform.forward, Quaternion.identity, attackData.Range, attackMask);
+                hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, selectedAttack.Range), transform.forward, Quaternion.identity, selectedAttack.Range, attackMask);
                 break;
             case EAttackTyp.Radial:
-                hits = Physics.SphereCastAll(transform.position, attackData.Range, Vector3.one, .1f, attackMask);
+                hits = Physics.SphereCastAll(transform.position, selectedAttack.Range, Vector3.one, .1f, attackMask);
                 break;
             case EAttackTyp.Projectile:
-                if (attackData.ProjectileObj == null)
+                if (selectedAttack.ProjectileObj == null)
                 {
                     Debug.LogError("Missing Projectile");
                     return;
                 }
-                var projectile = GameObject.Instantiate(attackData.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
-                projectile.Set(attackData, this);
+                var projectile = GameObject.Instantiate(selectedAttack.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
+                projectile.Set(selectedAttack, this);
                 projectile.transform.LookAt(projectile.transform.position + transform.forward);
-                Destroy(projectile.gameObject, attackData.Range);
+                Destroy(projectile.gameObject, selectedAttack.Range);
                 return;
         }
 
@@ -110,7 +110,7 @@ public class AttackingEntity : MonoBehaviour
             var entity = hit.transform.GetComponent<AttackingEntity>();
             if (entity != null && entity != this)
             {
-                entity.TakeDamage(attackData);
+                entity.TakeDamage(selectedAttack);
             }
         }
     }
