@@ -5,13 +5,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     AttackingEntity ae;
-    Transform mesh;
 
     // Start is called before the first frame update
     void Start()
     {
-        mesh = transform.GetChild(0);
-        ae = mesh.GetComponent<AttackingEntity>();
+        ae = GetComponent<AttackingEntity>();
     }
 
     // Update is called once per frame
