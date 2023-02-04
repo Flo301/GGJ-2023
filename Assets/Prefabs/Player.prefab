@@ -6486,7 +6486,7 @@ MonoBehaviour:
     WeaponMesh: {fileID: 7201942719112953413}
     attackData:
       Typ: 1
-      Damage: 5000
+      Damage: 30
       Range: 4
       Cooldown: 0.5
       ProjectileObj: {fileID: 0}

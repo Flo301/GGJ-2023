@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FadeIntroText(string text, float fadeIn, float stay, float fadeOut)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.3f);
 
         WaveIntroText.text = text;
 
@@ -147,7 +147,6 @@ public class GameManager : MonoBehaviour
             fade += Time.deltaTime / fadeOut;
             Color c = WaveIntroText.color;
             c.a = 1f - fade;
-            Debug.Log(c.a);
             WaveIntroText.color = c;
 
             yield return new WaitForEndOfFrame();
