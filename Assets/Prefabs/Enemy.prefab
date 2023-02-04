@@ -396,6 +396,8 @@ MonoBehaviour:
   Weaknesses:
   - Type: 3
     Factor: 1.5
+  - Type: 1
+    Factor: 2
   attackMask:
     serializedVersion: 2
     m_Bits: 64
