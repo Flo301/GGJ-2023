@@ -16,25 +16,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var horizontalTranslation = Input.GetAxis("Horizontal") * movementSpeed;
-        var verticalTranslation = Input.GetAxis("Vertical") * movementSpeed;
-        Vector3 moveInput = new Vector3(horizontalTranslation, 0, verticalTranslation);
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        PlayerRigidbody.MovePosition(transform.position + moveDirection.normalized * movementSpeed * Time.deltaTime);
 
-        PlayerRigidbody.MovePosition(transform.position + moveInput * Time.deltaTime);
+        Vector3 rotationDirection = new Vector3(Input.GetAxis("JoystickRightHorizontal"), 0, Input.GetAxis("JoystickRightVertical"));
 
-        var horizontalStickRotation = Input.GetAxis("JoystickRightHorizontal");
-        var verticalStickRotation = Input.GetAxis("JoystickRightVertical");
-        Vector3 stickMovementDirection = new Vector3(horizontalStickRotation, 0, verticalStickRotation);
-        var horizontalMouseRotation = Input.GetAxis("Mouse X");
-        var verticalMouseRotation = Input.GetAxis("Mouse Y");
-        Vector3 mouseMovementDirection = new Vector3(horizontalMouseRotation, 0, verticalMouseRotation);
-
-        if (stickMovementDirection != Vector3.zero)
+        if (rotationDirection == Vector3.zero)
         {
-            Quaternion rotation = Quaternion.Slerp(PlayerRigidbody.rotation, Quaternion.LookRotation(stickMovementDirection, Vector3.up), rotationSpeed * Time.deltaTime);
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+            {
+                rotationDirection = hit.point;
+                rotationDirection.y = transform.position.y;
+                transform.LookAt(rotationDirection);
+            }
+        }
+        else
+        {
+            Quaternion rotation = Quaternion.Slerp(PlayerRigidbody.rotation, Quaternion.LookRotation(rotationDirection, Vector3.up), rotationSpeed * Time.deltaTime);
             PlayerRigidbody.rotation = rotation;
         }
-
     }
 }
 
