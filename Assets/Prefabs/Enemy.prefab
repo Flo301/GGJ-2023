@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 4826134453608019172}
   - component: {fileID: 4826134453608019173}
   - component: {fileID: 4826134453608019171}
-  - component: {fileID: 7691211204680996993}
-  m_Layer: 10
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db1aeec0ec6ba80b8b4c9ef05a4b24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  growthSpeed: 0.1
   max: 2
 --- !u!135 &4826134453608019171
 SphereCollider:
@@ -63,31 +63,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7691211204680996993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4826134453608019174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackData:
-    Typ: 1
-    Damage: 5
-    Range: 2
-    Cooldown: 0.7
-  HP: 100
-  debugAttackKey: 0
 --- !u!1 &4826134454353968988
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +81,8 @@ GameObject:
   - component: {fileID: 4826134454353968984}
   - component: {fileID: 4826134454353968985}
   - component: {fileID: 4826134454353968986}
-  m_Layer: 0
+  - component: {fileID: 7392223286711834289}
+  m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +132,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d934894bad193cca09e4062c4bd670fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -193,3 +175,28 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7392223286711834289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826134454353968988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackData:
+    Typ: 2
+    Damage: 5
+    Range: 2
+    Cooldown: 0.7
+  maxHP: 100
+  HP: 100
+  HpBar: {fileID: 0}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 64
+  parent: {fileID: 4826134453608019174}
+  debugAttackKey: 0

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197540987789619366}
   - component: {fileID: 1197540987789619367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5598041295506609665}
   - component: {fileID: 5598041295506609664}
   - component: {fileID: 5598041295506609667}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598041295610415438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ Transform:
   - {fileID: 5598041297502744214}
   - {fileID: 5598041297080139626}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5598041297080139631
 GameObject:
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5598041297080139629}
   - component: {fileID: 5598041297080139628}
   - component: {fileID: 5598041297080139627}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 5598041297502744216}
   - component: {fileID: 5598041297502744219}
   - component: {fileID: 5598041297502744212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerModel
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -398,6 +398,9 @@ MonoBehaviour:
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 8
   debugAttackKey: 257
 --- !u!114 &1197540987295757032
 MonoBehaviour:

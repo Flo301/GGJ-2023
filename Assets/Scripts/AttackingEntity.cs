@@ -6,6 +6,9 @@ public class AttackingEntity : MonoBehaviour
     public float maxHP = 100;
     public float HP = 100;
     public HpBar HpBar;
+
+    public LayerMask attackMask;
+    public GameObject parent;
     public KeyCode debugAttackKey = KeyCode.None;
 
     private float attackCooldown = 0f;
@@ -46,17 +49,29 @@ public class AttackingEntity : MonoBehaviour
         else
         {
             GameManager.Instance.OnEnemyDie();
-            Destroy(gameObject);
+            Destroy(parent != null ? parent : gameObject);
         }
     }
 
     public void Attack()
     {
         if (attackCooldown > 0) return;
-
-        // Debug.Log($"{transform.name} => DoAttack", gameObject);
         attackCooldown = attackData.Cooldown;
-        RaycastHit[] hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, attackData.Range), transform.forward, Quaternion.identity, attackData.Range);
+        // Debug.Log($"{transform.name} => DoAttack", gameObject);
+
+        RaycastHit[] hits = null;
+        switch (attackData.Typ)
+        {
+            case EAttackTyp.Close:
+                hits = Physics.BoxCastAll(transform.position, new Vector3(.1f, 2, attackData.Range), transform.forward, Quaternion.identity, attackData.Range, attackMask);
+                break;
+            case EAttackTyp.Radial:
+                hits = Physics.SphereCastAll(transform.position, attackData.Range, Vector3.one, .1f, attackMask);
+                break;
+        }
+
+        if (hits == null) return;
+
         foreach (var hit in hits)
         {
             var entity = hit.transform.GetComponent<AttackingEntity>();

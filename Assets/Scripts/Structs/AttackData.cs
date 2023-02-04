@@ -10,4 +10,5 @@ public struct AttackData
 public enum EAttackTyp
 {
     Close = 1,
+    Radial = 2,
 }

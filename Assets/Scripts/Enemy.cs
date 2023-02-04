@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     {
         mesh = transform.GetChild(0);
         mesh.localScale = new Vector3(growth, growth, growth);
-        ae = GetComponent<AttackingEntity>();
+        ae = mesh.GetComponent<AttackingEntity>();
     }
 
     // Update is called once per frame
@@ -25,9 +25,8 @@ public class Enemy : MonoBehaviour
         mesh.localScale = new Vector3(growth, growth, growth);
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnTriggerStay(Collider collision)
     {
-        Debug.Log(collision.collider);
         ae.Attack();
     }
 }
