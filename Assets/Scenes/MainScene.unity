@@ -1467,7 +1467,8 @@ MonoBehaviour:
     Range: 10
     Cooldown: 0.5
   maxHP: 100
-  DamageTaken: 0
+  HP: 0
+  Resistance: 0
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -2288,7 +2289,8 @@ MonoBehaviour:
     Range: 10
     Cooldown: 0.5
   maxHP: 100
-  DamageTaken: 0
+  HP: 0
+  Resistance: 0
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -2390,9 +2392,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 134885370408916586, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
+      propertyPath: range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 134885370408916586, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1901036048}
+    - target: {fileID: 134885370408916586, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
+      propertyPath: interval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 134885370408916586, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
+      propertyPath: minDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 134885370408916587, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2802,7 +2816,8 @@ MonoBehaviour:
     Range: 10
     Cooldown: 0.5
   maxHP: 100
-  DamageTaken: 0
+  HP: 0
+  Resistance: 0
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -2975,6 +2990,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7392223286711834289, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      propertyPath: HP
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392223286711834289, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      propertyPath: maxHP
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3142,12 +3165,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: HP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: HpBar
       value: 
       objectReference: {fileID: 1531966755}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: maxHP
-      value: 250
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: attackData.Damage

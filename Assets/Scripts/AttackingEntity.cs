@@ -4,14 +4,15 @@ public class AttackingEntity : MonoBehaviour
 {
     public AttackData attackData;
     public float maxHP = 100;
-    public float DamageTaken = 0;
+    public float HP = 0;
+    public float Resistance = 0;
     public HpBar HpBar;
 
     public LayerMask attackMask;
     public GameObject parent;
     public KeyCode debugAttackKey = KeyCode.None;
 
-    private float attackCooldown = 0f;
+    private float attackCooldown = 0;
 
     // Update is called once per frame
     void Update()
@@ -29,9 +30,8 @@ public class AttackingEntity : MonoBehaviour
 
     public void TakeDamage(AttackData attack)
     {
-        DamageTaken += attack.Damage;
-        float HP = maxHP - DamageTaken;
-        // Debug.Log($"{transform.name} => DMG:{attack.Damage} HP:{HP}", gameObject);
+        float Damage = attack.Damage * (1 - Mathf.Clamp(Resistance, 0, 1));
+        HP -= Damage;
         if (HpBar != null)
             HpBar.setHP(HP / maxHP);
 
