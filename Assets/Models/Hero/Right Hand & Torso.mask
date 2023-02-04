@@ -1,0 +1,259 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Right Hand & Torso
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Hero
+    m_Weight: 0
+  - m_Path: Hero/Antenna
+    m_Weight: 0
+  - m_Path: Hero/Box
+    m_Weight: 0
+  - m_Path: Hero/Eyes
+    m_Weight: 0
+  - m_Path: Hero/Gloves
+    m_Weight: 0
+  - m_Path: Hero/Head
+    m_Weight: 0
+  - m_Path: Hero/Helmet
+    m_Weight: 0
+  - m_Path: Hero/Jacket
+    m_Weight: 0
+  - m_Path: Hero/Mask
+    m_Weight: 0
+  - m_Path: Hero/Pants
+    m_Weight: 0
+  - m_Path: Hero/Pipes
+    m_Weight: 0
+  - m_Path: Hero/Shoes
+    m_Weight: 0
+  - m_Path: Hero/Velcro Fastenrs
+    m_Weight: 0
+  - m_Path: Hero/Visor
+    m_Weight: 0
+  - m_Path: Hero/VisorHinges
+    m_Weight: 0
+  - m_Path: Hero Armature
+    m_Weight: 0
+  - m_Path: Hero Armature/Base
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Antenna IK
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Antenna IK/Antenna IK_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.IK.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.IK.l/Foot.IK.l_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.IK.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.IK.r/Foot.IK.r_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.Pole.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.Pole.l/Foot.Pole.l_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.Pole.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Foot.Pole.r/Foot.Pole.r_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Hand.IK.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Hand.IK.l/Hand.IK.l_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Hand.IK.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Hand.IK.r/Hand.IK.r_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Box
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Box/Antenna
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Box/Antenna/Antenna.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Box/Antenna/Antenna.001/Antenna.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Box/Antenna/Antenna.001/Antenna.002/Antenna.002_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Box/PipeTarget
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Box/PipeTarget/PipeTarget_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Cleaver.l.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Cleaver.l.001/Cleaver.l.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Cleaver.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Cleaver.r/Cleaver.r_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat/Head
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat/Head/Mask
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat/Head/Mask/Pipe
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat/Head/Mask/Pipe/Pipe.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat/Head/Mask/Pipe/Pipe.001/Pipe.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/Throat/Head/Mask/Pipe/Pipe.001/Pipe.002/Pipe.002_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/IndexBase.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/IndexBase.l/Index.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/IndexBase.l/Index.l/Index.l.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/IndexBase.l/Index.l/Index.l.002/Index.l.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/IndexBase.l/Index.l/Index.l.002/Index.l.001/Index.l.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/Pinky.Base.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/Pinky.Base.l/Pinky.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/Pinky.Base.l/Pinky.l/Pinky.l.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/Pinky.Base.l/Pinky.l/Pinky.l.002/Pinky.l.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/Pinky.Base.l/Pinky.l/Pinky.l.002/Pinky.l.001/Pinky.l.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/StinkyBase.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/StinkyBase.l/Stinky.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/StinkyBase.l/Stinky.l/Stinky.l.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/StinkyBase.l/Stinky.l/Stinky.l.002/Stinky.l.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/StinkyBase.l/Stinky.l/Stinky.l.002/Stinky.l.001/Stinky.l.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/ThumbBase.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/ThumbBase.l/Thumb.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/ThumbBase.l/Thumb.l/ThumbTip.l
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.l/LowerArm.l/ThumbBase.l/Thumb.l/ThumbTip.l/ThumbTip.l_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/IndexBase.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/IndexBase.r/Index.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/IndexBase.r/Index.r/Index.r.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/IndexBase.r/Index.r/Index.r.002/Index.r.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/IndexBase.r/Index.r/Index.r.002/Index.r.001/Index.r.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/Pinky.Base.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/Pinky.Base.r/Pinky.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/Pinky.Base.r/Pinky.r/Pinky.r.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/Pinky.Base.r/Pinky.r/Pinky.r.002/Pinky.r.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/Pinky.Base.r/Pinky.r/Pinky.r.002/Pinky.r.001/Pinky.r.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/StinkyBase.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/StinkyBase.r/Stinky.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/StinkyBase.r/Stinky.r/Stinky.r.002
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/StinkyBase.r/Stinky.r/Stinky.r.002/Stinky.r.001
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/StinkyBase.r/Stinky.r/Stinky.r.002/Stinky.r.001/Stinky.r.001_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/ThumbBase.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/ThumbBase.r/Thumb.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/ThumbBase.r/Thumb.r/ThumbTip.r
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Chest/UpperArm.r/LowerArm.r/ThumbBase.r/Thumb.r/ThumbTip.r/ThumbTip.r_end
+    m_Weight: 1
+  - m_Path: Hero Armature/Base/Spine/Hip
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l/BottomHeel.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l/BottomHeel.l/BottomHeel.l_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l/Foor.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l/Foor.l/Foor.l_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l/Heel.l
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.l/LowerLeg.l/Heel.l/Heel.l_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r/BottomHeel.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r/BottomHeel.r/BottomHeel.r_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r/Foor.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r/Foor.r/Foor.r_end
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r/Heel.r
+    m_Weight: 0
+  - m_Path: Hero Armature/Base/Spine/Hip/UpperLeg.r/LowerLeg.r/Heel.r/Heel.r_end
+    m_Weight: 0
+  - m_Path: Melee Long
+    m_Weight: 0
+  - m_Path: Melee Long/Sword
+    m_Weight: 0
+  - m_Path: Melee Short
+    m_Weight: 0
+  - m_Path: Melee Short/Knife
+    m_Weight: 0
+  - m_Path: Melee Short/Machete
+    m_Weight: 0
+  - m_Path: Thorwable
+    m_Weight: 0
+  - m_Path: Thorwable/Granade
+    m_Weight: 0
+  - m_Path: Thorwable/Molotov
+    m_Weight: 0
+  - m_Path: Thorwable/Molotov/Molotov Cloth
+    m_Weight: 0
+  - m_Path: Trigger Double
+    m_Weight: 0
+  - m_Path: Trigger Double/Flamethrower
+    m_Weight: 0
+  - m_Path: Trigger Single
+    m_Weight: 0
+  - m_Path: Trigger Single/Flaregun
+    m_Weight: 0
