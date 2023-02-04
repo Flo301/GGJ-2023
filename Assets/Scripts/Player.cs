@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class Player : MonoBehaviour
     public Light SpotLight;
     private Rigidbody PlayerRigidbody;
     private AttackingEntity AttackingEntity;
-    public PlayerAttack[] AttackData;
+    public List<PlayerAttack> AttackData;
     private Color AttackBaseColor;
     private int AttackNumber;
     private Animator PlayerAnimator;
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckSelectedAttack();
+        CheckSelectedWeapon();
         CheckWeapon();
 
         if (Input.GetButtonDown("Jump"))
@@ -49,17 +50,19 @@ public class Player : MonoBehaviour
             PlayerAnimator.SetTrigger("Flipping Bird");
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             AttackingEntity.Attack();
             PlayerAnimator.SetTrigger("Fire");
         }
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1"))
+        {
             PlayerAnimator.SetBool("Rapid Fire", true);
         }
 
-        if (Input.GetButtonUp("Fire1")) {
+        if (Input.GetButtonUp("Fire1"))
+        {
             PlayerAnimator.SetBool("Rapid Fire", false);
         }
 
@@ -138,39 +141,94 @@ public class Player : MonoBehaviour
         }
     }
 
-    void CheckSelectedAttack()
+    /*     void CheckSelectedAttack()
+        {
+            var _attackNumber = AttackNumber;
+            if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetButtonDown("NextWeapon"))
+            {
+                _attackNumber = (AttackNumber + 1);
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetButtonDown("PrevWeapon"))
+            {
+                _attackNumber = (AttackNumber - 1);
+            }
+            if (_attackNumber < AttackData.Length && _attackNumber >= 0)
+            {
+                foreach (var attackData in AttackData)
+                {
+                    Image img = attackData.uiAttack.GetComponent<Image>();
+                    if (null != img)
+                    {
+                        img.color = AttackBaseColor;
+                    }
+
+                    if (!attackData.isUnlocked)
+                    {
+                        attackData.uiAttack.GetComponent<Image>().color = new Color32(165, 0, 0, 255);
+                    }
+
+                    attackData.WeaponMesh.SetActive(false);
+                }
+
+                AttackNumber = _attackNumber;
+
+
+                selectedAttack = AttackData[AttackNumber];
+
+                AttackingEntity.selectedAttack = selectedAttack.attackData;
+
+                selectedAttack.WeaponMesh.SetActive(true);
+                selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
+
+                SpotLight.range = AttackingEntity.selectedAttack.Range;
+            }
+        } */
+
+    void CheckSelectedWeapon()
     {
-        var _attackNumber = AttackNumber;
+        var availableWeapons = new List<PlayerAttack>();
+
+        foreach (var attack in AttackData)
+        {
+            Image img = attack.uiAttack.GetComponent<Image>();
+            if (null != img)
+            {
+                img.color = AttackBaseColor;
+            }
+
+            if (attack.isUnlocked)
+            {
+                availableWeapons.Add(attack);
+            }
+            else
+            {
+                attack.uiAttack.GetComponent<Image>().color = new Color32(165, 0, 0, 255);
+            }
+
+            attack.WeaponMesh.SetActive(false);
+        }
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetButtonDown("NextWeapon"))
         {
-            _attackNumber = (AttackNumber + 1);
+            if (AttackNumber + 1 < availableWeapons.Count)
+            {
+                AttackNumber = AttackNumber + 1;
+                selectedAttack = availableWeapons[AttackNumber];
+            }
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetButtonDown("PrevWeapon"))
         {
-            _attackNumber = (AttackNumber - 1);
-        }
-        if (_attackNumber < AttackData.Length && _attackNumber >= 0)
-        {
-            foreach (var attackData in AttackData)
+            if (AttackNumber - 1 >= 0)
             {
-                Image img = attackData.uiAttack.GetComponent<Image>();
-                if (null != img)
-                {
-                    img.color = AttackBaseColor;
-                }
-                attackData.WeaponMesh.SetActive(false);
+                AttackNumber = AttackNumber - 1;
+                selectedAttack = availableWeapons[AttackNumber];
             }
-            
-            AttackNumber = _attackNumber;
-            selectedAttack = AttackData[AttackNumber];
-
-            AttackingEntity.selectedAttack = selectedAttack.attackData;
-
-            selectedAttack.WeaponMesh.SetActive(true);
-            selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
-            
-            SpotLight.range = AttackingEntity.selectedAttack.Range;
         }
+
+        selectedAttack.WeaponMesh.SetActive(true);
+        selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
+
+        SpotLight.range = selectedAttack.attackData.Range;
     }
 
 }
