@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1865,7 +1865,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1360423476
 GameObject:
@@ -2904,6 +2904,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1402279023, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e5600378dd761e64d9423790c482bf36, type: 3}
     - target: {fileID: 5387250212507123427, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
       propertyPath: m_Name
       value: UI
@@ -2918,7 +2922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5387250212507123431, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5387250212507123431, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3025,6 +3029,10 @@ PrefabInstance:
       propertyPath: HpBar
       value: 
       objectReference: {fileID: 1531966755}
+    - target: {fileID: 2614282487586835632, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: Weaknesses.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: Ground
       value: 
@@ -3041,9 +3049,45 @@ PrefabInstance:
       propertyPath: AttackData.Array.data[2].uiAttack
       value: 
       objectReference: {fileID: 1241718858}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.Typ
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.Range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[0].attackData.Damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[1].attackData.Damage
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.Damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[0].attackData.Cooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[1].attackData.Cooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.Cooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.ProjectileObj
+      value: 
+      objectReference: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
     - target: {fileID: 6967976175546923497, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6967976175546923497, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3185,7 +3229,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6714508366681681055
 MonoBehaviour:

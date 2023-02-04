@@ -8,6 +8,7 @@ public class AttackingEntity : MonoBehaviour
     public float HP = 0;
     public float Resistance = 0;
     public HpBar HpBar;
+    public HpBar StaminarBar;
     public List<WeaknessData> Weaknesses = new List<WeaknessData>();
 
     public LayerMask attackMask;
@@ -28,6 +29,8 @@ public class AttackingEntity : MonoBehaviour
         if (attackCooldown > 0)
         {
             attackCooldown -= Time.deltaTime;
+            if (StaminarBar != null)
+                StaminarBar.setHP(1 - (attackCooldown / selectedAttack.Cooldown));
         }
     }
 
