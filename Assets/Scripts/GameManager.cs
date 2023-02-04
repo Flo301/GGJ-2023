@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -5,7 +6,9 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text[] killCounts;
-    public RectTransform gameOverScreen;
+    public Text MoneyText;
+    public GameObject GameOver;
+    public GameObject Shop;
     public bool Controller = false;
     static public GameManager Instance { get; private set; }
 
@@ -26,7 +29,8 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         Time.timeScale = 1;
 
-        gameOverScreen.gameObject.SetActive(false);
+        GameOver.gameObject.SetActive(false);
+        Shop.gameObject.SetActive(false);
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
@@ -49,6 +53,13 @@ public class GameManager : MonoBehaviour
     {
         //GAME_OVER
         Time.timeScale = 0;
-        gameOverScreen.gameObject.SetActive(true);
+        GameOver.SetActive(true);
+    }
+
+    public void OnLevelFinish() {
+        //BUY ITEM
+        Time.timeScale = 0;
+        //MoneyText.text = $"Money: {Money}";
+        Shop.SetActive(true);
     }
 }

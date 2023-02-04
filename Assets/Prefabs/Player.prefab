@@ -844,12 +844,12 @@ GameObject:
   - component: {fileID: 998249998731918771}
   - component: {fileID: 3386071522615241268}
   m_Layer: 6
-  m_Name: Thorwable
+  m_Name: Throwable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &998249998731918771
 Transform:
   m_ObjectHideFlags: 0
@@ -6481,6 +6481,8 @@ MonoBehaviour:
   SpotLight: {fileID: 5580367333172835252}
   AttackData:
   - Name: Meele
+    isUnlocked: 1
+    Prize: 0
     WeaponMesh: {fileID: 7201942719112953413}
     attackData:
       Typ: 1
@@ -6489,8 +6491,10 @@ MonoBehaviour:
       Cooldown: 0.5
       ProjectileObj: {fileID: 0}
     uiAttack: {fileID: 0}
-  - Name: Throwable
-    WeaponMesh: {fileID: 1776981660168711243}
+  - Name: Sword
+    isUnlocked: 0
+    Prize: 120
+    WeaponMesh: {fileID: 3555941110925103166}
     attackData:
       Typ: 1
       Damage: 80
@@ -6499,6 +6503,8 @@ MonoBehaviour:
       ProjectileObj: {fileID: 0}
     uiAttack: {fileID: 0}
   - Name: Flare Gun
+    isUnlocked: 0
+    Prize: 60
     WeaponMesh: {fileID: 4931044192788643432}
     attackData:
       Typ: 3
@@ -6508,6 +6514,8 @@ MonoBehaviour:
       ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
     uiAttack: {fileID: 0}
   - Name: Flame Thrower
+    isUnlocked: 0
+    Prize: 250
     WeaponMesh: {fileID: 8489594881860289857}
     attackData:
       Typ: 3

@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &2935671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3555941110925103166, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-  m_PrefabInstance: {fileID: 5580367334445367656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &10640431
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +228,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10640431}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &275742643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4817157172555971215, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+  m_PrefabInstance: {fileID: 5387250213528797979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &372766655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,11 +1335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5b79ceade037b2bba4aacc04aa6efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &1185733617 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5387250214562486506, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
-  m_PrefabInstance: {fileID: 5387250213528797979}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1189708357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,6 +1619,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1241718858, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
   m_PrefabInstance: {fileID: 5387250213528797979}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1291989568 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1291989568, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+  m_PrefabInstance: {fileID: 5387250213528797979}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1308419076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1872,9 @@ MonoBehaviour:
   killCounts:
   - {fileID: 1886345882}
   - {fileID: 1842239811}
-  gameOverScreen: {fileID: 1185733617}
+  MoneyText: {fileID: 1291989568}
+  GameOver: {fileID: 275742643}
+  Shop: {fileID: 1564336014}
   Controller: 0
 --- !u!4 &1340716305
 Transform:
@@ -2209,6 +2217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5b79ceade037b2bba4aacc04aa6efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1564336014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1564336014, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+  m_PrefabInstance: {fileID: 5387250213528797979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1579785413
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,6 +2938,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1873223959, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1340716304}
     - target: {fileID: 1094594692449159581, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3050,14 +3067,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1776981660168711243, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: m_Name
-      value: Throwable
-      objectReference: {fileID: 0}
-    - target: {fileID: 1776981660168711243, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2614282487586835632, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: HpBar
       value: 
@@ -3070,22 +3079,6 @@ PrefabInstance:
       propertyPath: Ground
       value: 
       objectReference: {fileID: 865513453}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[1].Name
-      value: Sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[1].Prize
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[2].Prize
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[3].Prize
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: AttackData.Array.data[0].uiAttack
       value: 
@@ -3102,26 +3095,6 @@ PrefabInstance:
       propertyPath: AttackData.Array.data[3].uiAttack
       value: 
       objectReference: {fileID: 1241718858}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[0].isUnlocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[1].WeaponMesh
-      value: 
-      objectReference: {fileID: 2935671}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[1].isUnlocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[2].isUnlocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3555941110925103166, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6967976175546923497, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_RootOrder
       value: 3

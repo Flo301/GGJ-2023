@@ -93,7 +93,8 @@ public class AttackingEntity : MonoBehaviour
 
         if (tag == "Player")
         {
-            GameManager.Instance.OnPlayerDie();
+            //GameManager.Instance.OnPlayerDie();
+            GameManager.Instance.OnLevelFinish();
         }
         else
         {
