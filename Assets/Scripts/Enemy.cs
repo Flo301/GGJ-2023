@@ -2,35 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : AttackingEntity
 {
-    AttackingEntity ae;
+    private Animator Animator;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        ae = transform.GetChild(0).GetComponent<AttackingEntity>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        Animator = GetComponentInChildren<Animator>();
     }
 
     void OnTriggerStay(Collider collision)
     {
-        ae.Attack();
+        var playerPos = GameManager.Instance.Player.transform.position;
+        transform.LookAt(new Vector3(playerPos.x, transform.position.y, playerPos.z));
+
+        if (Attack())
+        {
+            Animator.SetTrigger("Strong_Attack");
+        }
     }
 
     void Harden()
     {
-        WeaknessData projectileWeakness = ae.getWeakness(EAttackTyp.Close);
+        WeaknessData projectileWeakness = getWeakness(EAttackTyp.Close);
         projectileWeakness.Factor = 1f;
     }
 
     void BecomeFireResistant()
     {
-        WeaknessData projectileWeakness = ae.getWeakness(EAttackTyp.Projectile);
+        WeaknessData projectileWeakness = getWeakness(EAttackTyp.Projectile);
         projectileWeakness.Factor = 0.5f;
     }
 }

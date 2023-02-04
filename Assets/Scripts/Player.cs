@@ -6,23 +6,26 @@ public class Player : MonoBehaviour
 {
     public float movementSpeed = 10.0f;
     public float rotationSpeed = 10.0f;
-    public GameObject Ground;
-    public Light SpotLight;
-    public List<PlayerAttack> AttackData;
-    
+    public Light SpotLight;    
     private Rigidbody PlayerRigidbody;
-    private AttackingEntity AttackingEntity;
+    public AttackingEntity AttackingEntity { get; private set; }
+    public List<PlayerAttack> AttackData;
     private Color AttackBaseColor;
+    public GameObject Ground;
     private int AttackNumber;
     private Animator PlayerAnimator;
     private PlayerAttack selectedAttack;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         PlayerRigidbody = GetComponent<Rigidbody>();
         AttackingEntity = GetComponent<AttackingEntity>();
         PlayerAnimator = GetComponentInChildren<Animator>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         PlayerAnimator.SetBool("Walking", false);
         PlayerAnimator.SetBool("Meele Short", false);
         PlayerAnimator.SetBool("Meele Long", false);
@@ -54,13 +57,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            AttackingEntity.Attack();
-            PlayerAnimator.SetTrigger("Fire");
+            PlayerAnimator.SetBool("Rapid Fire", true);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            PlayerAnimator.SetBool("Rapid Fire", true);
+            AttackingEntity.Attack();
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -77,7 +79,6 @@ public class Player : MonoBehaviour
     {
         if (selectedAttack.Name == "Meele")
         {
-
             PlayerAnimator.SetBool("Meele Short", true);
             PlayerAnimator.SetBool("Throwable", false);
             PlayerAnimator.SetBool("Trigger Single", false);
@@ -111,7 +112,6 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (moveDirection.sqrMagnitude > 1) moveDirection = moveDirection.normalized;
         PlayerRigidbody.MovePosition(transform.position + moveDirection * movementSpeed * Time.deltaTime);
-
 
         PlayerAnimator.SetBool("Walking", moveDirection.sqrMagnitude > 0f);
         PlayerAnimator.SetFloat("Speed", moveDirection.sqrMagnitude);

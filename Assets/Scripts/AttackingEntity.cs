@@ -93,19 +93,18 @@ public class AttackingEntity : MonoBehaviour
 
         if (tag == "Player")
         {
-            //GameManager.Instance.OnPlayerDie();
-            GameManager.Instance.OnLevelFinish();
+            GameManager.Instance.OnPlayerDie();
         }
         else
         {
-            GameManager.Instance.OnEnemyDie();
+            GameManager.Instance.OnEnemyDie(this);
             Destroy(parent != null ? parent : gameObject);
         }
     }
 
-    public void Attack()
+    public bool Attack()
     {
-        if (attackCooldown > 0) return;
+        if (attackCooldown > 0) return false;
         attackCooldown = selectedAttack.Cooldown;
         // Debug.Log($"{transform.name} => DoAttack", gameObject);
 
@@ -122,16 +121,16 @@ public class AttackingEntity : MonoBehaviour
                 if (selectedAttack.ProjectileObj == null)
                 {
                     Debug.LogError("Missing Projectile");
-                    return;
+                    return false;
                 }
                 var projectile = GameObject.Instantiate(selectedAttack.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
                 projectile.Set(selectedAttack, this);
                 projectile.transform.LookAt(projectile.transform.position + transform.forward);
                 Destroy(projectile.gameObject, selectedAttack.Range);
-                return;
+                return true;
         }
 
-        if (hits == null) return;
+        if (hits == null) return true;
 
         foreach (var hit in hits)
         {
@@ -141,5 +140,7 @@ public class AttackingEntity : MonoBehaviour
                 entity.TakeDamage(selectedAttack);
             }
         }
+
+        return true;
     }
 }
