@@ -95,6 +95,9 @@ public class Player : MonoBehaviour
 
             AttackingEntity.selectedAttack = AttackData[_attackNumber].attackData;
             AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190); 
+            if (AttackingEntity.selectedAttack.Typ == EAttackTyp.Radial) {
+                SpotLight.spotAngle = 360;
+            }
             SpotLight.range = AttackingEntity.selectedAttack.Range;
             AttackNumber = _attackNumber;
         }
