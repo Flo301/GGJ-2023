@@ -1466,6 +1466,7 @@ MonoBehaviour:
     Damage: 10
     Range: 10
     Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
@@ -2287,6 +2288,7 @@ MonoBehaviour:
     Damage: 10
     Range: 10
     Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
@@ -2736,6 +2738,7 @@ MonoBehaviour:
     Damage: 10
     Range: 10
     Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}

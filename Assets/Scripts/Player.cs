@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public PlayerAttack[] AttackData;
     private Color AttackBaseColor;
     private int AttackNumber;
+    public GameObject Ground;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +51,18 @@ public class Player : MonoBehaviour
 
         if (!GameManager.Instance.Controller)
         {
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit))
+            Ray target = Camera.main.ScreenPointToRay(Input.mousePosition);
+            bool success = false;
+            RaycastHit hit;
+            if (null != Ground)
+            {
+                success = Ground.GetComponent<Collider>().Raycast(target, out hit, float.PositiveInfinity);
+            }
+            else
+            {
+                success = Physics.Raycast(target, out hit);
+            }
+            if (success)
             {
                 rotationDirection = hit.point;
                 rotationDirection.y = transform.position.y;
