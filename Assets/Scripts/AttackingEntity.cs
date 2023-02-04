@@ -69,15 +69,15 @@ public class AttackingEntity : MonoBehaviour
                 hits = Physics.SphereCastAll(transform.position, selectedAttack.Range, Vector3.one, .1f, attackMask);
                 break;
             case EAttackTyp.Projectile:
-                if (attackData.ProjectileObj == null)
+                if (selectedAttack.ProjectileObj == null)
                 {
                     Debug.LogError("Missing Projectile");
                     return;
                 }
-                var projectile = GameObject.Instantiate(attackData.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
-                projectile.Set(attackData, this);
+                var projectile = GameObject.Instantiate(selectedAttack.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
+                projectile.Set(selectedAttack, this);
                 projectile.transform.LookAt(projectile.transform.position + transform.forward);
-                Destroy(projectile.gameObject, attackData.Range);
+                Destroy(projectile.gameObject, selectedAttack.Range);
                 return;
         }
 
