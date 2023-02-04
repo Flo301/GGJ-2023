@@ -356,8 +356,8 @@ MonoBehaviour:
     Range: 4
     Cooldown: 0.7
     ProjectileObj: {fileID: 0}
-  maxHP: 50
-  HP: 50
+  maxHP: 100
+  HP: 100
   Resistance: 0
   HpBar: {fileID: 2712903280546616410}
   StaminarBar: {fileID: 2581179502142658541}
