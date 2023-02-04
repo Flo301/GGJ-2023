@@ -19,8 +19,7 @@ public class Player : MonoBehaviour
     {
         PlayerRigidbody = GetComponent<Rigidbody>();
         AttackingEntity = GetComponent<AttackingEntity>();
-        PlayerAnimator = GetComponent<Animator>();
-        PlayerAnimator.SetBool("Walking", false);
+        PlayerAnimator = GetComponentInChildren<Animator>();
 
         //Get Base Data
         AttackNumber = 0;
@@ -50,7 +49,7 @@ public class Player : MonoBehaviour
         if (moveDirection.sqrMagnitude > 1) moveDirection = moveDirection.normalized;
         PlayerRigidbody.MovePosition(transform.position + moveDirection * movementSpeed * Time.deltaTime);
 
-        PlayerAnimator.SetBool("Walking", PlayerRigidbody.velocity.magnitude > 0);
+        PlayerAnimator.SetBool("Walking", moveDirection.magnitude > 0f);
 
 
         Vector3 rotationDirection = new Vector3(Input.GetAxis("JoystickRightHorizontal"), 0, Input.GetAxis("JoystickRightVertical"));
