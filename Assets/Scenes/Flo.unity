@@ -2902,9 +2902,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: HP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: HpBar
       value: 
       objectReference: {fileID: 1531966755}
+    - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: maxHP
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
