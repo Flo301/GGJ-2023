@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class Player : MonoBehaviour
     public Light SpotLight;
     private Rigidbody PlayerRigidbody;
     private AttackingEntity AttackingEntity;
+    public PlayerAttack[] AttackData;
+    private Color AttackBaseColor;
+    private int AttackNumber;
     public GameObject Ground;
 
     // Start is called before the first frame update
@@ -14,7 +18,15 @@ public class Player : MonoBehaviour
     {
         PlayerRigidbody = GetComponent<Rigidbody>();
         AttackingEntity = GetComponent<AttackingEntity>();
-        SpotLight.range = AttackingEntity.attackData.Range;
+
+        //Get Base Data
+        AttackNumber = 0;
+        AttackingEntity.selectedAttack = AttackData[AttackNumber].attackData;
+        AttackBaseColor = AttackData[AttackNumber].uiAttack.GetComponent<Image>().color;
+
+        //Set Init Data
+        AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color(46, 155, 62, 190);
+        SpotLight.range = AttackingEntity.selectedAttack.Range;
     }
 
     // Update is called once per frame
@@ -26,6 +38,7 @@ public class Player : MonoBehaviour
         }
 
         Movement();
+        CheckSelectedAttack();
     }
 
     void Movement()
@@ -60,6 +73,30 @@ public class Player : MonoBehaviour
         {
             Quaternion rotation = Quaternion.Slerp(PlayerRigidbody.rotation, Quaternion.LookRotation(rotationDirection, Vector3.up), rotationSpeed * Time.deltaTime);
             PlayerRigidbody.rotation = rotation;
+        }
+    }
+
+    void CheckSelectedAttack()
+    {
+        var _attackNumber = AttackNumber;
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            _attackNumber = (AttackNumber + 1);
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            _attackNumber = (AttackNumber - 1);
+        }
+        if (_attackNumber < AttackData.Length && _attackNumber >= 0)
+        {
+            foreach (var attackData in AttackData) {
+                attackData.uiAttack.GetComponent<Image>().color = AttackBaseColor;
+            }
+
+            AttackingEntity.selectedAttack = AttackData[_attackNumber].attackData;
+            AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190); 
+            SpotLight.range = AttackingEntity.selectedAttack.Range;
+            AttackNumber = _attackNumber;
         }
     }
 }

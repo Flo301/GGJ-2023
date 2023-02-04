@@ -230,7 +230,7 @@ Transform:
   - {fileID: 5598041297502744214}
   - {fileID: 5598041297080139626}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5598041297080139631
 GameObject:
@@ -390,14 +390,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackData:
-    Typ: 3
-    Damage: 30
-    Range: 0.5
-    Cooldown: 0.25
-    ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
-  maxHP: 1000
-  HP: 1
+  selectedAttack:
+    Name: 
+    Icon: {fileID: 0}
+    Typ: 0
+    Damage: 0
+    Range: 0
+    Cooldown: 0
+    ProjectileObj: {fileID: 0}
+  maxHP: 100
+  HP: 100
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -419,6 +421,35 @@ MonoBehaviour:
   movementSpeed: 10
   rotationSpeed: 10
   SpotLight: {fileID: 1197540987789619367}
+  AttackData:
+  - attackData:
+      Name: Knife
+      Icon: {fileID: 0}
+      Typ: 1
+      Damage: 50
+      Range: 4
+      Cooldown: 0.2
+      ProjectileObj: {fileID: 0}
+    uiAttack: {fileID: 0}
+  - attackData:
+      Name: Sword
+      Icon: {fileID: 0}
+      Typ: 1
+      Damage: 100
+      Range: 5
+      Cooldown: 0.4
+      ProjectileObj: {fileID: 0}
+    uiAttack: {fileID: 0}
+  - attackData:
+      Name: RoundHouseKick
+      Icon: {fileID: 0}
+      Typ: 2
+      Damage: 200
+      Range: 3
+      Cooldown: 0.6
+      ProjectileObj: {fileID: 0}
+    uiAttack: {fileID: 0}
+  Ground: {fileID: 0}
 --- !u!33 &5598041297502744217
 MeshFilter:
   m_ObjectHideFlags: 0
