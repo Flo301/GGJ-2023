@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float MapBorder = 32;
 
     public Text[] killCounts;
+    public TMPro.TMP_Text WaveIntroText;
     public Text MoneyText;
     public GameObject GameOver;
     public GameObject Shop;
@@ -92,7 +94,16 @@ public class GameManager : MonoBehaviour
     {
         CurrentWave++;
         Shop.SetActive(false);
-        StartWave(CurrentWave);
+        if (CurrentWave >= WaveData.Length)
+        {
+            //WIN!!!
+            Debug.LogWarning("Du hast gewonnen!");
+            OnPlayerDie();
+        }
+        else
+        {
+            StartWave(CurrentWave);
+        }
     }
 
     private void StartWave(int index)
@@ -100,12 +111,46 @@ public class GameManager : MonoBehaviour
         Player.transform.position = Vector3.zero;
         Player.AttackingEntity.HP = Player.AttackingEntity.maxHP;
 
+        StartCoroutine(FadeIntroText(WaveData[index].IntroText, 2, 3, 1.5f));
+
         foreach (var enemyData in WaveData[index].Enemies)
         {
             for (int i = 0; i < enemyData.Amount; i++)
             {
                 Enemies.Add(SpawnOnBorder(enemyData.Prefab));
             }
+        }
+    }
+
+    IEnumerator FadeIntroText(string text, float fadeIn, float stay, float fadeOut)
+    {
+        yield return new WaitForSeconds(1);
+
+        WaveIntroText.text = text;
+
+        float fade = 0;
+        while (fade < 1)
+        {
+            fade += Time.deltaTime / fadeIn;
+            Color c = WaveIntroText.color;
+            c.a = fade;
+            WaveIntroText.color = c;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return new WaitForSeconds(stay);
+
+        fade = 0;
+        while (fade < 1)
+        {
+            fade += Time.deltaTime / fadeOut;
+            Color c = WaveIntroText.color;
+            c.a = 1f - fade;
+            Debug.Log(c.a);
+            WaveIntroText.color = c;
+
+            yield return new WaitForEndOfFrame();
         }
     }
 
