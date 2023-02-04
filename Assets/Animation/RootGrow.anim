@@ -49,7 +49,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Mesh 
+    path: Strong Slahing Root Variant
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -86,7 +86,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: selectedAttack.Cooldown
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -125,7 +125,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: selectedAttack.Damage
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -164,7 +164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: selectedAttack.Range
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -203,7 +203,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Resistance
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -272,7 +272,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: selectedAttack.Cooldown
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -311,7 +311,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: selectedAttack.Damage
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -350,7 +350,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -389,7 +389,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -428,7 +428,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -467,7 +467,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: selectedAttack.Range
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
@@ -506,7 +506,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: Resistance
-    path: Mesh 
+    path: Strong Slahing Root Variant
     classID: 114
     script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
     flags: 0
