@@ -1,8 +1,8 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct WeaknessData
+public class WeaknessData
 {
-    public EAttackTyp Type;
-    public float Factor;
+    public EAttackTyp Type = EAttackTyp.Close;
+    public float Factor = 1;
 }

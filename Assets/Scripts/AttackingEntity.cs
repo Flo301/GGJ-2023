@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AttackingEntity : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class AttackingEntity : MonoBehaviour
     public float HP = 0;
     public float Resistance = 0;
     public HpBar HpBar;
-    public WeaknessData[] Weaknesses;
+    public List<WeaknessData> Weaknesses = new List<WeaknessData>();
 
     public LayerMask attackMask;
     public GameObject parent;
@@ -31,24 +32,35 @@ public class AttackingEntity : MonoBehaviour
 
     public void TakeDamage(AttackData attack)
     {
-        float res = 1 - Mathf.Clamp(Resistance, 0, 1);
-        float Factor = 1;
-        foreach (WeaknessData weakness in Weaknesses)
-        {
-            if (attack.Typ == weakness.Type) {
-                Factor = weakness.Factor;
-                break;
-            }
-        }
-        float Damage = attack.Damage * Factor * res;
+        float WeaknessFactor = getWeakness(attack.Typ).Factor;
+        float ResistanceFactor = 1 - Mathf.Clamp(Resistance, 0, 1);
+        float Damage = attack.Damage * WeaknessFactor * ResistanceFactor;
+        Debug.Log($"{attack.Damage} * {WeaknessFactor} * {ResistanceFactor} => {Damage}");
         HP -= Damage;
+
         if (HpBar != null)
+        {
             HpBar.setHP(HP / maxHP);
+        }
 
         if (HP <= 0)
         {
             Die();
         }
+    }
+
+    public WeaknessData getWeakness(EAttackTyp type)
+    {
+        foreach (WeaknessData weakness in Weaknesses)
+        {
+            if (type == weakness.Type)
+            {
+                return weakness;
+            }
+        }
+        WeaknessData newWeakness = new WeaknessData { Type = type, Factor = 1 };
+        Weaknesses.Add(newWeakness);
+        return newWeakness;
     }
 
     virtual protected void Die()

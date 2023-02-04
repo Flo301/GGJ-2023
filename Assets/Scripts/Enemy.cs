@@ -23,4 +23,10 @@ public class Enemy : MonoBehaviour
     {
         ae.Attack();
     }
+
+    void Harden()
+    {
+        WeaknessData projectileWeakness = ae.getWeakness(EAttackTyp.Projectile);
+        projectileWeakness.Factor = 0.5f;
+    }
 }
