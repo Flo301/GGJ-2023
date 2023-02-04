@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private int AttackNumber;
     private Animator PlayerAnimator;
     public GameObject Ground;
+    private PlayerAttack selectedAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,16 @@ public class Player : MonoBehaviour
         PlayerRigidbody = GetComponent<Rigidbody>();
         AttackingEntity = GetComponent<AttackingEntity>();
         PlayerAnimator = GetComponentInChildren<Animator>();
+        PlayerAnimator.SetBool("Walking", false);
+        PlayerAnimator.SetBool("Meele Short", false);
+        PlayerAnimator.SetBool("Meele Long", false);
+        PlayerAnimator.SetBool("Throwable", false);
+        PlayerAnimator.SetBool("Trigger Single", false);
+        PlayerAnimator.SetBool("Trigger Double", false);
 
         //Get Base Data
         AttackNumber = 0;
-        AttackingEntity.selectedAttack = AttackData[AttackNumber].attackData;
+        selectedAttack = AttackData[AttackNumber];
         AttackBaseColor = AttackData[AttackNumber].uiAttack.GetComponent<Image>().color;
 
         //Set Init Data
@@ -34,13 +41,57 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Fire1") == 1)
+        CheckSelectedAttack();
+        CheckWeapon();
+
+        if (Input.GetButtonDown("Jump"))
         {
-            AttackingEntity.Attack();
+            PlayerAnimator.SetTrigger("Flipping Bird");
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            AttackingEntity.Attack();
+            PlayerAnimator.SetTrigger("Fire");
+
+        }
+
+        PlayerAnimator.SetBool("Rapid Fire", Input.GetButton("Fire1"));
+
         Movement();
-        CheckSelectedAttack();
+    }
+
+    void CheckWeapon()
+    {
+        if (selectedAttack.Name == "Meele")
+        {
+
+            PlayerAnimator.SetBool("Meele Short", true);
+            PlayerAnimator.SetBool("Throwable", false);
+            PlayerAnimator.SetBool("Trigger Single", false);
+            PlayerAnimator.SetBool("Trigger Double", false);
+        }
+        else if (selectedAttack.Name == "Throwable")
+        {
+            PlayerAnimator.SetBool("Meele Short", false);
+            PlayerAnimator.SetBool("Throwable", true);
+            PlayerAnimator.SetBool("Trigger Single", false);
+            PlayerAnimator.SetBool("Trigger Double", false);
+        }
+        else if (selectedAttack.Name == "Flare Gun")
+        {
+            PlayerAnimator.SetBool("Meele Short", false);
+            PlayerAnimator.SetBool("Throwable", false);
+            PlayerAnimator.SetBool("Trigger Single", true);
+            PlayerAnimator.SetBool("Trigger Double", false);
+        }
+        else if (selectedAttack.Name == "Flame Thrower")
+        {
+            PlayerAnimator.SetBool("Meele Short", false);
+            PlayerAnimator.SetBool("Throwable", false);
+            PlayerAnimator.SetBool("Trigger Single", false);
+            PlayerAnimator.SetBool("Trigger Double", true);
+        }
     }
 
     void Movement()
@@ -49,8 +100,9 @@ public class Player : MonoBehaviour
         if (moveDirection.sqrMagnitude > 1) moveDirection = moveDirection.normalized;
         PlayerRigidbody.MovePosition(transform.position + moveDirection * movementSpeed * Time.deltaTime);
 
-        PlayerAnimator.SetBool("Walking", moveDirection.magnitude > 0f);
 
+        PlayerAnimator.SetBool("Walking", moveDirection.sqrMagnitude > 0f);
+        PlayerAnimator.SetFloat("Speed", moveDirection.sqrMagnitude);
 
         Vector3 rotationDirection = new Vector3(Input.GetAxis("JoystickRightHorizontal"), 0, Input.GetAxis("JoystickRightVertical"));
 
@@ -101,13 +153,21 @@ public class Player : MonoBehaviour
                 {
                     img.color = AttackBaseColor;
                 }
+                attackData.WeaponMesh.SetActive(false);
             }
-
-            AttackingEntity.selectedAttack = AttackData[_attackNumber].attackData;
-            AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
-            SpotLight.range = AttackingEntity.selectedAttack.Range;
+            
             AttackNumber = _attackNumber;
+            selectedAttack = AttackData[AttackNumber];
+
+            AttackingEntity.selectedAttack = selectedAttack.attackData;
+
+            selectedAttack.WeaponMesh.SetActive(true);
+            selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
+            
+            SpotLight.range = AttackingEntity.selectedAttack.Range;
         }
     }
+
 }
+
 
