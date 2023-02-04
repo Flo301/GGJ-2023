@@ -35,14 +35,12 @@ public class AttackingEntity : MonoBehaviour
         float Factor = 1;
         foreach (WeaknessData weakness in Weaknesses)
         {
-        Debug.Log($"{attack.Typ} == {weakness.Type}");
             if (attack.Typ == weakness.Type) {
                 Factor = weakness.Factor;
                 break;
             }
         }
         float Damage = attack.Damage * Factor * res;
-        Debug.Log($"{attack.Damage} * {Factor} * {res} => {Damage}");
         HP -= Damage;
         if (HpBar != null)
             HpBar.setHP(HP / maxHP);
