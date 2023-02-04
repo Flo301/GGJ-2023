@@ -7,6 +7,7 @@ public class AttackingEntity : MonoBehaviour
     public float HP = 0;
     public float Resistance = 0;
     public HpBar HpBar;
+    public WeaknessData[] Weaknesses;
 
     public LayerMask attackMask;
     public GameObject parent;
@@ -30,7 +31,18 @@ public class AttackingEntity : MonoBehaviour
 
     public void TakeDamage(AttackData attack)
     {
-        float Damage = attack.Damage * (1 - Mathf.Clamp(Resistance, 0, 1));
+        float res = 1 - Mathf.Clamp(Resistance, 0, 1);
+        float Factor = 1;
+        foreach (WeaknessData weakness in Weaknesses)
+        {
+        Debug.Log($"{attack.Typ} == {weakness.Type}");
+            if (attack.Typ == weakness.Type) {
+                Factor = weakness.Factor;
+                break;
+            }
+        }
+        float Damage = attack.Damage * Factor * res;
+        Debug.Log($"{attack.Damage} * {Factor} * {res} => {Damage}");
         HP -= Damage;
         if (HpBar != null)
             HpBar.setHP(HP / maxHP);
