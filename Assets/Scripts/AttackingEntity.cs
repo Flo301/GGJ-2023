@@ -4,7 +4,7 @@ public class AttackingEntity : MonoBehaviour
 {
     public AttackData attackData;
     public float maxHP = 100;
-    public float HP = 100;
+    public float DamageTaken = 0;
     public HpBar HpBar;
 
     public LayerMask attackMask;
@@ -29,8 +29,9 @@ public class AttackingEntity : MonoBehaviour
 
     public void TakeDamage(AttackData attack)
     {
+        DamageTaken += attack.Damage;
+        float HP = maxHP - DamageTaken;
         // Debug.Log($"{transform.name} => DMG:{attack.Damage} HP:{HP}", gameObject);
-        HP -= attack.Damage;
         if (HpBar != null)
             HpBar.setHP(HP / maxHP);
 

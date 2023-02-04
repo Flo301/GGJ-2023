@@ -230,7 +230,7 @@ Transform:
   - {fileID: 5598041297502744214}
   - {fileID: 5598041297080139626}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5598041297080139631
 GameObject:
@@ -395,12 +395,13 @@ MonoBehaviour:
     Damage: 200
     Range: 3
     Cooldown: 0.5
-  maxHP: 100
-  HP: 100
+  maxHP: 1000
+  HP: 1
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
     m_Bits: 8
+  parent: {fileID: 0}
   debugAttackKey: 257
 --- !u!114 &1197540987295757032
 MonoBehaviour:

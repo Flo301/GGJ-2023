@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1467,7 +1467,7 @@ MonoBehaviour:
     Range: 10
     Cooldown: 0.5
   maxHP: 100
-  HP: 100
+  DamageTaken: 0
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -2288,7 +2288,7 @@ MonoBehaviour:
     Range: 10
     Cooldown: 0.5
   maxHP: 100
-  HP: 100
+  DamageTaken: 0
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -2802,7 +2802,7 @@ MonoBehaviour:
     Range: 10
     Cooldown: 0.5
   maxHP: 100
-  HP: 100
+  DamageTaken: 0
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
@@ -2933,15 +2933,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4826134453608019172, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3637156
+      value: -27.52
       objectReference: {fileID: 0}
     - target: {fileID: 4826134453608019172, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 7.97
       objectReference: {fileID: 0}
     - target: {fileID: 4826134453608019172, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.8542233
+      value: 15.52
       objectReference: {fileID: 0}
     - target: {fileID: 4826134453608019172, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3145,6 +3145,14 @@ PrefabInstance:
       propertyPath: HpBar
       value: 
       objectReference: {fileID: 1531966755}
+    - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: maxHP
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: attackData.Damage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
