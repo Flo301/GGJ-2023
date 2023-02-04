@@ -230,7 +230,7 @@ Transform:
   - {fileID: 5598041297502744214}
   - {fileID: 5598041297080139626}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5598041297080139631
 GameObject:
@@ -392,9 +392,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackData:
     Typ: 3
-    Damage: 200
-    Range: 3
-    Cooldown: 0.5
+    Damage: 30
+    Range: 0.5
+    Cooldown: 0.25
     ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
   maxHP: 100
   HP: 100
