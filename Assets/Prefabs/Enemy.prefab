@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4826134453608019173}
   - component: {fileID: 4826134453608019171}
   - component: {fileID: 425523196098991112}
-  - component: {fileID: 6513980105910790058}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -85,38 +84,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &6513980105910790058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4826134453608019174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedAttack:
-    Name: Root Slash
-    Icon: {fileID: 0}
-    Typ: 2
-    Damage: 3
-    Range: 4
-    Cooldown: 0.7
-    ProjectileObj: {fileID: 0}
-  maxHP: 100
-  HP: 100
-  Resistance: 0
-  HpBar: {fileID: 0}
-  Weaknesses:
-  - Type: 3
-    Factor: 1.5
-  attackMask:
-    serializedVersion: 2
-    m_Bits: 64
-  parent: {fileID: 4826134453608019174}
-  debugAttackKey: 0
 --- !u!1 &4826134454353968988
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +96,7 @@ GameObject:
   - component: {fileID: 4826134454353968984}
   - component: {fileID: 4826134454353968985}
   - component: {fileID: 8959871648316877015}
+  - component: {fileID: 335875478536790168}
   m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
@@ -224,3 +192,35 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &335875478536790168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826134454353968988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAttack:
+    Name: Root Slash
+    Icon: {fileID: 0}
+    Typ: 2
+    Damage: 3
+    Range: 4
+    Cooldown: 0.7
+    ProjectileObj: {fileID: 0}
+  maxHP: 100
+  HP: 100
+  Resistance: 0
+  HpBar: {fileID: 0}
+  Weaknesses:
+  - Type: 3
+    Factor: 1.5
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 64
+  parent: {fileID: 4826134453608019174}
+  debugAttackKey: 0
