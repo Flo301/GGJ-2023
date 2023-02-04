@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1466,6 +1466,7 @@ MonoBehaviour:
     Damage: 10
     Range: 10
     Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
@@ -2287,6 +2288,7 @@ MonoBehaviour:
     Damage: 10
     Range: 10
     Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
@@ -2801,6 +2803,7 @@ MonoBehaviour:
     Damage: 10
     Range: 10
     Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
@@ -3093,6 +3096,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1197540987295757032, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: Ground
+      value: 
+      objectReference: {fileID: 865513453}
     - target: {fileID: 5598041295610415438, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -3140,6 +3147,10 @@ PrefabInstance:
     - target: {fileID: 5598041295610415441, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: HP
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: HpBar
