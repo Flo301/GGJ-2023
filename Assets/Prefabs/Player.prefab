@@ -2713,7 +2713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5310555457980670549
 Transform:
   m_ObjectHideFlags: 0
@@ -6375,7 +6375,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7780225390486463315}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6448,8 +6448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedAttack:
-    Name: 
-    Icon: {fileID: 0}
     Typ: 0
     Damage: 0
     Range: 0
@@ -6481,32 +6479,41 @@ MonoBehaviour:
   rotationSpeed: 10
   SpotLight: {fileID: 5580367333172835252}
   AttackData:
-  - attackData:
-      Name: Knife
-      Icon: {fileID: 0}
+  - Name: Meele
+    WeaponMesh: {fileID: 7201942719112953413}
+    attackData:
       Typ: 1
       Damage: 50
       Range: 4
       Cooldown: 0.2
       ProjectileObj: {fileID: 0}
     uiAttack: {fileID: 0}
-  - attackData:
-      Name: Sword
-      Icon: {fileID: 0}
+  - Name: Throwable
+    WeaponMesh: {fileID: 1776981660168711243}
+    attackData:
       Typ: 1
       Damage: 100
       Range: 5
       Cooldown: 0.4
       ProjectileObj: {fileID: 0}
     uiAttack: {fileID: 0}
-  - attackData:
-      Name: RoundHouseKick
-      Icon: {fileID: 0}
-      Typ: 2
+  - Name: Flare Gun
+    WeaponMesh: {fileID: 4931044192788643432}
+    attackData:
+      Typ: 3
       Damage: 200
       Range: 3
       Cooldown: 0.6
-      ProjectileObj: {fileID: 0}
+      ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
+    uiAttack: {fileID: 0}
+  - Name: Flame Thrower
+    WeaponMesh: {fileID: 8489594881860289857}
+    attackData:
+      Typ: 3
+      Damage: 200
+      Range: 3
+      Cooldown: 0.6
+      ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
     uiAttack: {fileID: 0}
   Ground: {fileID: 0}
 --- !u!1 &7991675956245963212
