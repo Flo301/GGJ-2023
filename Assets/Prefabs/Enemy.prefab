@@ -41,9 +41,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4826134453608019172}
-  - component: {fileID: 4826134453608019173}
   - component: {fileID: 4826134453608019171}
   - component: {fileID: 425523196098991112}
+  - component: {fileID: 5890630699012839504}
+  - component: {fileID: 317447897424447421}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -68,18 +69,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4826134453608019173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4826134453608019174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db1aeec0ec6ba80b8b4c9ef05a4b24e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &4826134453608019171
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -117,6 +106,62 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &5890630699012839504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826134453608019174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db1aeec0ec6ba80b8b4c9ef05a4b24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedAttack:
+    Typ: 2
+    Damage: 5
+    Range: 2
+    Cooldown: 0.5
+    ProjectileObj: {fileID: 0}
+  maxHP: 100
+  HP: 100
+  Resistance: 0
+  HpBar: {fileID: 2712903280546616410}
+  StaminarBar: {fileID: 2581179502142658541}
+  Weaknesses:
+  - Type: 3
+    Factor: 1.5
+  - Type: 1
+    Factor: 2
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 64
+  parent: {fileID: 4826134453608019174}
+  debugAttackKey: 0
+--- !u!136 &317447897424447421
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4826134453608019174}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7350958835088928821
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9816273
       objectReference: {fileID: 0}
     - target: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -282,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.19080894
       objectReference: {fileID: 0}
     - target: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -294,7 +339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -327,82 +372,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2410931617521553660, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5916830630349237154}
-    - targetCorrespondingSourceObject: {fileID: 2410931617521553660, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1925024644904744444}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
 --- !u!4 &373733848837579144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3044021189259364934, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
   m_PrefabInstance: {fileID: 3391577551713463246}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1036976182629808946 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2410931617521553660, guid: c7b6119d9ca77924798da5c4d0663cf0, type: 3}
-  m_PrefabInstance: {fileID: 3391577551713463246}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &5916830630349237154
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036976182629808946}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 2.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &1925024644904744444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036976182629808946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1121a0e9bf356f9ebef0ef50008bda2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedAttack:
-    Name: Root Slash
-    Icon: {fileID: 0}
-    Typ: 2
-    Damage: 3
-    Range: 4
-    Cooldown: 0.7
-    ProjectileObj: {fileID: 0}
-  maxHP: 100
-  HP: 100
-  Resistance: 0
-  HpBar: {fileID: 2712903280546616410}
-  StaminarBar: {fileID: 2581179502142658541}
-  Weaknesses:
-  - Type: 3
-    Factor: 1.5
-  - Type: 1
-    Factor: 2
-  attackMask:
-    serializedVersion: 2
-    m_Bits: 64
-  parent: {fileID: 4826134453608019174}
-  debugAttackKey: 0
 --- !u!1001 &6941657521972273222
 PrefabInstance:
   m_ObjectHideFlags: 0
