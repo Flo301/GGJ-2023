@@ -8,7 +8,6 @@ public class HpBar : MonoBehaviour
 
     public void setHP(float value)
     {
-        Debug.Log(value);
         RedBar.value = value;
     }
 }
