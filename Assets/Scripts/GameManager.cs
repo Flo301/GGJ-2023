@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Application.targetFrameRate = 60; //Flo's Laptop sucks...
+
         if (Instance != null)
             Debug.LogError("unsuported second GameManager!");
         Instance = this;

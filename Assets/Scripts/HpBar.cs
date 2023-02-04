@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.RectTransform;
 
 public class HpBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image RedBar;
 
-    // Update is called once per frame
-    void Update()
+    public void setHP(float value)
     {
-        
+        var width = 398;
+        RedBar.rectTransform.SetSizeWithCurrentAnchors(Axis.Horizontal, width * value);
     }
 }
