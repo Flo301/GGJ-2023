@@ -230,7 +230,7 @@ Transform:
   - {fileID: 5598041297502744214}
   - {fileID: 5598041297080139626}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5598041297080139631
 GameObject:
@@ -391,16 +391,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackData:
-    Typ: 1
+    Typ: 3
     Damage: 200
     Range: 3
     Cooldown: 0.5
+    ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
   maxHP: 100
   HP: 100
   HpBar: {fileID: 0}
   attackMask:
     serializedVersion: 2
     m_Bits: 8
+  parent: {fileID: 0}
   debugAttackKey: 257
 --- !u!114 &1197540987295757032
 MonoBehaviour:
