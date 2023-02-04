@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 5387250213803481472}
   - component: {fileID: 5387250213803481473}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: KillCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kills 100
+  m_Text: 
 --- !u!1 &5387250213843262042
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kills 10
+  m_Text: No Kills = NOOB!
 --- !u!1 &5387250214299073510
 GameObject:
   m_ObjectHideFlags: 0
