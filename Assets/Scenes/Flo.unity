@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -583,6 +583,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819578122}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &861328807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5598041297502744218, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+  m_PrefabInstance: {fileID: 1197540986547246068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &865513453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1021,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfestionSpot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 861328807}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: triggerDistance
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8123282904047288292, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1401,6 +1414,14 @@ PrefabInstance:
     - target: {fileID: 8123282904047288288, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
       propertyPath: m_Name
       value: InfestionSpot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 861328807}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: triggerDistance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8123282904047288292, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
       propertyPath: m_RootOrder
@@ -2263,6 +2284,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfestionSpot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 861328807}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: forceSpawnTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: triggerDistance
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8123282904047288292, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2323,7 +2356,7 @@ PrefabInstance:
     - target: {fileID: 134885370408916586, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1901036048}
+      objectReference: {fileID: 861328807}
     - target: {fileID: 134885370408916587, guid: 79fe5665e2ee461a0842b71c462111a0, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2614,11 +2647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1901036048 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5598041295610415441, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-  m_PrefabInstance: {fileID: 1197540986547246068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1986526405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2903,7 +2931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: HP
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: HpBar
@@ -2911,7 +2939,7 @@ PrefabInstance:
       objectReference: {fileID: 1531966755}
     - target: {fileID: 6836236170379878296, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: maxHP
-      value: 500
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3046,6 +3074,14 @@ PrefabInstance:
     - target: {fileID: 8123282904047288288, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
       propertyPath: m_Name
       value: InfestionSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 861328807}
+    - target: {fileID: 8123282904047288291, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
+      propertyPath: triggerDistance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8123282904047288292, guid: 48e75581e68209e709f97eac0721ec02, type: 3}
       propertyPath: m_RootOrder
