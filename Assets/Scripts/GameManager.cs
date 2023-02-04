@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public Text[] killCounts;
     public RectTransform gameOverScreen;
-    public bool Controller;
+    public bool Controller = false;
     static public GameManager Instance { get; private set; }
 
     private int KillCount = 0;
@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Controller = true;
         Application.targetFrameRate = 60; //Flo's Laptop sucks...
 
         if (Instance != null)
