@@ -87,11 +87,13 @@ public class GameManager : MonoBehaviour
     {
         //GAME_OVER
         Time.timeScale = 0;
+        HUD.SetActive(false);
         GameOverScreen.SetActive(true);
     }
 
     private void OnGameFinish()
     {
+        HUD.SetActive(false);
         GameEndScreen.SetActive(true);
     }
 
