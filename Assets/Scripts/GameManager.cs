@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public float MapBorder = 32;
 
     public Text[] killCounters;
+    public StatsScreen[] statsScreens;
     public TMPro.TMP_Text WaveIntroText;
     public Text MoneyText;
     public GameObject GameOverScreen;
@@ -21,9 +22,10 @@ public class GameManager : MonoBehaviour
     public bool Controller = false;
     public WaveData[] WaveData;
     public ShopItem[] ShopItems;
-    private float Money = 0;
+    private int Money = 0;
     private int CurrentWave = 0;
     private int KillCount = 0;
+    private int WaveKillCount = 0;
 
     private List<AttackingEntity> Enemies = new List<AttackingEntity>();
 
@@ -51,7 +53,8 @@ public class GameManager : MonoBehaviour
         Player = FindObjectOfType<Player>();
     }
 
-    public void OpenCredits() {
+    public void OpenCredits()
+    {
         SceneManager.LoadScene("Credits");
     }
 
@@ -65,11 +68,11 @@ public class GameManager : MonoBehaviour
         foreach (var killCounter in killCounters)
         {
             int selector = 0;
-            if (KillCount == 1)
+            if (WaveKillCount == 1)
             {
                 selector |= 1;
             }
-            if (KillCount > 1)
+            if (WaveKillCount > 1)
             {
                 selector |= 2;
             }
@@ -77,7 +80,7 @@ public class GameManager : MonoBehaviour
             {
                 selector |= 4;
             }
-            killCounter.text = string.Format(KillCounterTexts[selector], KillCount, Enemies.Count);
+            killCounter.text = string.Format(KillCounterTexts[selector], WaveKillCount, Enemies.Count);
         }
     }
 
@@ -89,20 +92,28 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDie()
     {
-        //GAME_OVER
-        Time.timeScale = 0;
+        foreach (var eeeee in Enemies)
+            Destroy(eeeee);
+
         HUD.SetActive(false);
+        foreach (var stat in statsScreens)
+            stat.SetStats(Money, KillCount);
+
         GameOverScreen.SetActive(true);
     }
 
     private void OnGameFinish()
     {
         HUD.SetActive(false);
+        foreach (var stat in statsScreens)
+            stat.SetStats(Money, KillCount);
+
         GameEndScreen.SetActive(true);
     }
 
     public void RestartGame()
     {
+        WaveKillCount = 0;
         KillCount = 0;
         Time.timeScale = 1;
 
@@ -120,7 +131,6 @@ public class GameManager : MonoBehaviour
     IEnumerator OpenShopAfterDelay()
     {
         yield return new WaitForSeconds(5f);
-
 
         WaveEndScreen.SetActive(false);
 
@@ -162,7 +172,7 @@ public class GameManager : MonoBehaviour
     public void StartNextWave()
     {
         CurrentWave++;
-        KillCount = 0;
+        WaveKillCount = 0;
         ShopScreen.SetActive(false);
         HUD.SetActive(true);
         if (CurrentWave >= WaveData.Length)
@@ -177,6 +187,7 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDie(AttackingEntity _enemy)
     {
+        WaveKillCount += 1;
         KillCount += 1;
         Enemies.Remove(_enemy);
         if (Enemies.Count == 0)
@@ -185,6 +196,7 @@ public class GameManager : MonoBehaviour
         }
         UpdateKillCounters();
     }
+
     private void StartWave(int index)
     {
         Player.transform.position = Vector3.zero;

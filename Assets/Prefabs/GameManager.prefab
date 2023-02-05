@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8020385092833258565
 MonoBehaviour:
@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409eef37a013d36e2918751a19a4309f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapBorder: 32
-  killCounts:
+  MapBorder: 20
+  killCounters:
+  - {fileID: 0}
+  statsScreens:
   - {fileID: 0}
   - {fileID: 0}
   WaveIntroText: {fileID: 0}
@@ -54,6 +56,7 @@ MonoBehaviour:
   ShopScreen: {fileID: 0}
   WaveEndScreen: {fileID: 0}
   GameEndScreen: {fileID: 0}
+  HUD: {fileID: 0}
   Controller: 0
   WaveData:
   - IntroText: The forest welcomes you!

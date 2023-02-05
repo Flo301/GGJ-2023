@@ -19,7 +19,7 @@ public class ShopItem : MonoBehaviour
         {
             BuyButton.interactable = true;
         }
-        else if (money >= playerAttack.Price && playerAttack.isUnlocked) {
+        else if (playerAttack.isUnlocked) {
             BuyButton.interactable = false;
             BuyButton.GetComponentInChildren<TMP_Text>().text = "Owned";
         }

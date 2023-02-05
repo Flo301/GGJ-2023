@@ -7,7 +7,7 @@ public class Spawner2D : MonoBehaviour
     public float range;
     public GameObject[] objs;
 
-    public float cooldown;
+    float cooldown;
 
     // Update is called once per frame
     void Update()
