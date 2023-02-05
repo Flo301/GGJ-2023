@@ -689,11 +689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &879354032 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1564336014, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
-  m_PrefabInstance: {fileID: 5387250213528797979}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &891399540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,14 +1732,35 @@ MonoBehaviour:
   - {fileID: 1842239811}
   WaveIntroText: {fileID: 1119765447}
   MoneyText: {fileID: 1797878566}
-  GameOver: {fileID: 1673755002}
-  Shop: {fileID: 879354032}
+  GameOverScreen: {fileID: 0}
+  ShopScreen: {fileID: 0}
+  WaveEndScreen: {fileID: 0}
+  GameEndScreen: {fileID: 0}
   Controller: 0
   WaveData:
   - IntroText: The forest welcomes you!
     Enemies:
-    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
+      Amount: 5
+  - IntroText: A growl in the dark!
+    Enemies:
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
       Amount: 10
+    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      Amount: 2
+  - IntroText: You must survive!
+    Enemies:
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
+      Amount: 20
+    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      Amount: 5
+  - IntroText: They are coming!
+    Enemies:
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
+      Amount: 30
+    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      Amount: 12
+  ShopItems: []
 --- !u!4 &1340716305
 Transform:
   m_ObjectHideFlags: 0
@@ -2191,11 +2207,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579785413}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1673755002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4817157172555971215, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
-  m_PrefabInstance: {fileID: 5387250213528797979}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1732428365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2829,38 +2840,6 @@ PrefabInstance:
       propertyPath: AttackData.Array.data[3].uiAttack
       value: 
       objectReference: {fileID: 1241718858}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[2].isUnlocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[3].isUnlocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[3].attackData.Range
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[2].attackData.Damage
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[3].attackData.Damage
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[2].attackData.Cooldown
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[3].attackData.Cooldown
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
-      propertyPath: AttackData.Array.data[3].attackData.ProjectileObj
-      value: 
-      objectReference: {fileID: 3255707254374931051, guid: bb16be2453808887b8c1284556e6351a, type: 3}
     - target: {fileID: 6967976175546923497, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_RootOrder
       value: 3

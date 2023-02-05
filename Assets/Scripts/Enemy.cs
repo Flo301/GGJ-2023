@@ -35,7 +35,7 @@ public class Enemy : AttackingEntity
         }
     }
 
-    void Update()
+    override protected void Update()
     {
         if (!moving)
         {
@@ -47,6 +47,8 @@ public class Enemy : AttackingEntity
                 TimeToJump = Random.Range(5, 25);
             }
         }
+
+        base.Update();
     }
 
     IEnumerator MoveToPlayer()
