@@ -6,15 +6,19 @@ public class Player : MonoBehaviour
 {
     public float movementSpeed = 10.0f;
     public float rotationSpeed = 10.0f;
-    public Light SpotLight;    
+    public Light SpotLight;
     private Rigidbody PlayerRigidbody;
     public AttackingEntity AttackingEntity { get; private set; }
-    public List<PlayerAttack> AttackData;
-    private Color AttackBaseColor;
     public GameObject Ground;
-    private int AttackNumber;
     private Animator PlayerAnimator;
-    private PlayerAttack selectedAttack;
+
+    //Attack Data
+    public List<PlayerAttack> Attacks;
+    private PlayerAttack selectedAttack
+    {
+        get => Attacks[selectedAttackIndex];
+    }
+    private int selectedAttackIndex;
 
     void Awake()
     {
@@ -34,14 +38,8 @@ public class Player : MonoBehaviour
         PlayerAnimator.SetBool("Trigger Double", false);
 
         //Get Base Data
-        AttackNumber = 0;
-        selectedAttack = AttackData[AttackNumber];
-        AttackingEntity.selectedAttack = selectedAttack.attackData;
-        AttackBaseColor = AttackData[AttackNumber].uiAttack.GetComponent<Image>().color;
-
-        //Set Init Data
-        AttackData[AttackNumber].uiAttack.GetComponent<Image>().color = new Color(46, 155, 62, 190);
-        SpotLight.range = AttackingEntity.selectedAttack.Range;
+        selectedAttackIndex = -1;
+        ChangeWeapon(true);
     }
 
     // Update is called once per frame
@@ -72,8 +70,6 @@ public class Player : MonoBehaviour
 
         Movement();
     }
-
-    
 
     void CheckWeapon()
     {
@@ -145,55 +141,51 @@ public class Player : MonoBehaviour
         }
     }
 
-
     void CheckSelectedAttack()
     {
-        var availableAttacks = new List<PlayerAttack>();
-
-        foreach (var attack in AttackData)
-        {
-            // Image img = attack.uiAttack.GetComponent<Image>();
-            // if (null != img)
-            // {
-            //     img.color = AttackBaseColor;
-            // }
-
-            if (attack.isUnlocked)
-            {
-                availableAttacks.Add(attack);
-            }
-            else
-            {
-                // attack.uiAttack.GetComponent<Image>().color = new Color32(165, 0, 0, 255);
-            }
-
-            attack.WeaponMesh.SetActive(false);
-        }
-
         if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetButtonDown("NextWeapon"))
         {
-            if (AttackNumber + 1 < availableAttacks.Count)
-            {
-                AttackNumber = AttackNumber + 1;
-                selectedAttack = availableAttacks[AttackNumber];
-            }
+            ChangeWeapon(true);
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetButtonDown("PrevWeapon"))
         {
-            if (AttackNumber - 1 >= 0)
-            {
-                AttackNumber = AttackNumber - 1;
-                selectedAttack = availableAttacks[AttackNumber];
-            }
+            ChangeWeapon(false);
         }
-
-        AttackingEntity.selectedAttack = selectedAttack.attackData;
-        selectedAttack.WeaponMesh.SetActive(true);
-        // selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
-
-        SpotLight.range = selectedAttack.attackData.Range;
     }
 
+    public void ChangeWeapon(bool up)
+    {
+        int index = selectedAttackIndex;
+        while (true)
+        {
+            index = (index + (up ? 1 : -1)) % Attacks.Count;
+            index = index < 0 ? Attacks.Count - 1 : index;
+            if (Attacks[index].isUnlocked)
+                break;
+        }
+
+        //update weapon infos on change
+        if (selectedAttackIndex != index)
+        {
+            selectedAttackIndex = index;
+
+            //Reset Color and Mesh for all weapons
+            foreach (var attack in Attacks)
+            {
+                Image img = attack.uiAttack.GetComponent<Image>();
+                if (null != img)
+                {
+                    img.color = attack.isUnlocked ? new Color32(100, 100, 100, 190) : new Color32(165, 0, 0, 190);
+                }
+
+                attack.WeaponMesh.SetActive(false);
+            }
+
+            //Update properties for current weapon
+            AttackingEntity.selectedAttack = selectedAttack.attackData;
+            selectedAttack.WeaponMesh.SetActive(true);
+            selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
+            SpotLight.range = selectedAttack.attackData.Range;
+        }
+    }
 }
-
-

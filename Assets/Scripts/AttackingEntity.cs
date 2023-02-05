@@ -19,7 +19,7 @@ public class AttackingEntity : MonoBehaviour
     private float attackCooldown = 0f;
 
     // Update is called once per frame
-    void Update()
+    virtual protected void Update()
     {
         if (debugAttackKey != KeyCode.None && Input.GetKeyDown(debugAttackKey))
         {
@@ -45,8 +45,8 @@ public class AttackingEntity : MonoBehaviour
         float ResistanceFactor = 1 - Mathf.Clamp(Resistance, 0, 1);
         float Damage = attack.Damage * WeaknessFactor * ResistanceFactor;
         // Debug.Log($"{attack.Damage} * {WeaknessFactor} * {ResistanceFactor} => {Damage}");
-
         // Debug.Log($"{transform.name} => DMG:{Damage} HP:{HP}", gameObject);
+
         TakeDamage(Damage);
     }
 
@@ -106,7 +106,8 @@ public class AttackingEntity : MonoBehaviour
     {
         if (attackCooldown > 0) return false;
         attackCooldown = selectedAttack.Cooldown;
-        // Debug.Log($"{transform.name} => DoAttack", gameObject);
+
+        //Debug.Log($"{transform.name} => DoAttack", gameObject);
 
         RaycastHit[] hits = null;
         switch (selectedAttack.Typ)
@@ -139,6 +140,7 @@ public class AttackingEntity : MonoBehaviour
 
         foreach (var hit in hits)
         {
+            if (hit.collider.isTrigger) continue;
             var entity = hit.transform.GetComponent<AttackingEntity>();
             if (entity != null && entity != this)
             {

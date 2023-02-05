@@ -2,22 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(AudioSource))]
 public class Enemy : AttackingEntity
 {
-    /// <summary>
-    /// Animator for the Attacking Animations
-    /// </summary>
     private Animator Animator;
 
+    private float ElapsedTimeSincePlayerContact = 0;
+
+    private float TimeToJump = 10;
+
+    private bool moving = false;
+
+    public float spread = 4;
+
+    public float movementSpeed = 0.3f;
+
+    public float diveSpeed = 0.1f;
+
+    [Header("Sounds")]
     /// <summary>
     /// Source for the Attacking Sounds
     /// </summary>
     /// <returns></returns>
     private AudioSource Audio;
 
-    [Header("Sounds")]
     /// <summary>
     /// Clip for Strong Attack
     /// </summary>
@@ -35,8 +42,6 @@ public class Enemy : AttackingEntity
     void Awake()
     {
         Animator = GetComponentInChildren<Animator>();
-        Audio = GetComponent<AudioSource>();
-        Audio.playOnAwake = false;
     }
 
     void OnTriggerStay(Collider collision)
@@ -47,8 +52,6 @@ public class Enemy : AttackingEntity
         if (Attack())
         {
             Animator.SetTrigger("Strong_Attack");
-            Audio.clip = StrongAttackClip;
-            Audio.Play();
         }
     }
 

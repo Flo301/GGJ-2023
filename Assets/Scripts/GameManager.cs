@@ -1,6 +1,6 @@
 using System.Collections;
-using TMPro;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,18 +10,32 @@ public class GameManager : MonoBehaviour
     public Player Player { get; private set; }
     public float MapBorder = 32;
 
-    public Text[] killCounts;
+    public Text[] killCounters;
     public TMPro.TMP_Text WaveIntroText;
     public Text MoneyText;
-    public GameObject GameOver;
-    public GameObject Shop;
+    public GameObject GameOverScreen;
+    public GameObject ShopScreen;
+    public GameObject WaveEndScreen;
+    public GameObject GameEndScreen;
     public bool Controller = false;
     public WaveData[] WaveData;
-
-    private int Money = 0;
+    public ShopItem[] ShopItems;
+    private float Money = 0;
     private int CurrentWave = 0;
     private int KillCount = 0;
+
     private List<AttackingEntity> Enemies = new List<AttackingEntity>();
+
+    private string[] KillCounterTexts = {
+        /* 000 */ "",
+        /* 001 */ "{0} Kill",
+        /* 010 */ "{0} Kills",
+        /* 011 */ "",
+        /* 100 */ "{1} Enemies Left",
+        /* 101 */ "{0} Kill, {1} Enemies Left",
+        /* 110 */ "{0} Kills, {1} Enemies Left",
+        /* 111 */ ""
+    };
 
     // Start is called before the first frame update
     static public GameManager Instance { get; private set; }
@@ -46,8 +60,10 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         Time.timeScale = 1;
 
-        GameOver.SetActive(false);
-        Shop.SetActive(false);
+        GameOverScreen.SetActive(false);
+        ShopScreen.SetActive(false);
+        WaveEndScreen.SetActive(false);
+        GameEndScreen.SetActive(false);
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
@@ -61,48 +77,105 @@ public class GameManager : MonoBehaviour
     {
         //GAME_OVER
         Time.timeScale = 0;
-        GameOver.SetActive(true);
+        GameOverScreen.SetActive(true);
     }
 
     public void OnEnemyDie(AttackingEntity _enemy)
     {
         KillCount += 1;
-        foreach (var killCount in killCounts)
-        {
-            killCount.text = $"Kills {KillCount}";
-        }
-
         Enemies.Remove(_enemy);
         if (Enemies.Count == 0)
         {
             OnWaveEnd();
         }
+        UpdateKillCounters();
     }
 
-    private void OnWaveEnd()
+    private void UpdateKillCounters()
+    {
+        foreach (var killCounter in killCounters)
+        {
+            int selector = 0;
+            if (KillCount == 1)
+            {
+                selector |= 1;
+            }
+            if (KillCount > 1)
+            {
+                selector |= 2;
+            }
+            if (killCounter.CompareTag("CountsEnemies"))
+            {
+                selector |= 4;
+            }
+            killCounter.text = string.Format(KillCounterTexts[selector], KillCount, Enemies.Count);
+        }
+    }
+
+    public void OnWaveEnd()
     {
         //Make-Money
         var leftHp = (int)Player.AttackingEntity.HP;
         Money += leftHp;
         MoneyText.text = $"Money: {Money}";
 
-        //Open-Shop
-        Shop.SetActive(true);
+        WaveEndScreen.SetActive(true);
+
+        StartCoroutine(OpenShopAfterDelay());
+    }
+
+    IEnumerator OpenShopAfterDelay()
+    {
+        yield return new WaitForSeconds(5f);
+
+
+        WaveEndScreen.SetActive(false);
+
+        UpdateShopItems();
+
+        ShopScreen.SetActive(true);
+    }
+
+    public void BuyItem(string item)
+    {
+        var index = Player.Attacks.FindIndex((attack) => attack.Name == item);
+        var playerAttack = Player.Attacks[index];
+
+        if (Money >= playerAttack.Price && !playerAttack.isUnlocked)
+        {
+            playerAttack.isUnlocked = true;
+            Money -= playerAttack.Price;
+            MoneyText.text = $"Money: {Money}";
+
+            Player.Attacks[index] = playerAttack;
+            Player.ChangeWeapon(true);
+
+            UpdateShopItems();
+        }
+
     }
 
     public void StartNextWave()
     {
         CurrentWave++;
-        Shop.SetActive(false);
+        KillCount = 0;
+        ShopScreen.SetActive(false);
         if (CurrentWave >= WaveData.Length)
         {
-            //WIN!!!
-            Debug.LogWarning("Du hast gewonnen!");
-            OnPlayerDie();
+            OnGameFinish();
         }
         else
         {
             StartWave(CurrentWave);
+        }
+    }
+
+    private void UpdateShopItems()
+    {
+        for (int i = 0; i < ShopItems.Length; i++)
+        {
+            var attack = Player.Attacks[i + 1];
+            ShopItems[i].SetPlayerAttack(attack, Money);
         }
     }
 
@@ -120,6 +193,11 @@ public class GameManager : MonoBehaviour
                 Enemies.Add(SpawnOnBorder(enemyData.Prefab));
             }
         }
+    }
+
+    private void OnGameFinish()
+    {
+        GameEndScreen.SetActive(true);
     }
 
     IEnumerator FadeIntroText(string text, float fadeIn, float stay, float fadeOut)
@@ -151,6 +229,8 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        UpdateKillCounters();
+        yield return new WaitForEndOfFrame();
     }
 
     private Enemy SpawnOnBorder(Enemy _prefab)
