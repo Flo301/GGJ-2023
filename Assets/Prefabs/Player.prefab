@@ -6479,7 +6479,8 @@ MonoBehaviour:
   movementSpeed: 10
   rotationSpeed: 10
   SpotLight: {fileID: 5580367333172835252}
-  AttackData:
+  Ground: {fileID: 0}
+  Attacks:
   - Name: Meele
     isUnlocked: 1
     Price: 0
@@ -6528,7 +6529,6 @@ MonoBehaviour:
       Cooldown: 0.2
       ProjectileObj: {fileID: 3255707254374931051, guid: bb16be2453808887b8c1284556e6351a, type: 3}
     uiAttack: {fileID: 0}
-  Ground: {fileID: 0}
 --- !u!1 &7991675956245963212
 GameObject:
   m_ObjectHideFlags: 0
