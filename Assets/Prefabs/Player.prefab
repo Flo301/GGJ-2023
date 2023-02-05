@@ -6482,7 +6482,8 @@ MonoBehaviour:
   AttackData:
   - Name: Meele
     isUnlocked: 1
-    Prize: 0
+    Price: 0
+    Icon: {fileID: 21300000, guid: b71467e741b0594ebb172e4a0f6a7cc5, type: 3}
     WeaponMesh: {fileID: 7201942719112953413}
     attackData:
       Typ: 1
@@ -6493,7 +6494,8 @@ MonoBehaviour:
     uiAttack: {fileID: 0}
   - Name: Sword
     isUnlocked: 0
-    Prize: 120
+    Price: 120
+    Icon: {fileID: 21300000, guid: 0a438c852ffebac9aa1203f83610e858, type: 3}
     WeaponMesh: {fileID: 3555941110925103166}
     attackData:
       Typ: 1
@@ -6504,7 +6506,8 @@ MonoBehaviour:
     uiAttack: {fileID: 0}
   - Name: Flare Gun
     isUnlocked: 0
-    Prize: 60
+    Price: 60
+    Icon: {fileID: 21300000, guid: 92586599dee7f1d818d88edaaddc9bc6, type: 3}
     WeaponMesh: {fileID: 4931044192788643432}
     attackData:
       Typ: 3
@@ -6515,7 +6518,8 @@ MonoBehaviour:
     uiAttack: {fileID: 0}
   - Name: Flame Thrower
     isUnlocked: 0
-    Prize: 250
+    Price: 250
+    Icon: {fileID: 21300000, guid: e10102cc9c01290148b97455337b4422, type: 3}
     WeaponMesh: {fileID: 8489594881860289857}
     attackData:
       Typ: 3
