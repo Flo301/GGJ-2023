@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1732,9 +1732,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MapBorder: 32
-  killCounts:
-  - {fileID: 1886345882}
+  killCounters:
   - {fileID: 1842239811}
+  - {fileID: 1886345882}
   WaveIntroText: {fileID: 1119765447}
   MoneyText: {fileID: 1797878566}
   GameOver: {fileID: 1673755002}
@@ -2776,6 +2776,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1340716304}
+    - target: {fileID: 5387250213803481474, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387250213803481475, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
+      propertyPath: m_TagString
+      value: CountsEnemies
+      objectReference: {fileID: 0}
     - target: {fileID: 5387250214299073508, guid: a679ab093a0fd317ca788e2dfef190c1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

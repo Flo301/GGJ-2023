@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Player Player { get; private set; }
     public float MapBorder = 32;
 
-    public Text[] killCounts;
+    public Text[] killCounters;
     public TMPro.TMP_Text WaveIntroText;
     public Text MoneyText;
     public GameObject GameOver;
@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     private int CurrentWave = 0;
     private int KillCount = 0;
     private List<AttackingEntity> Enemies = new List<AttackingEntity>();
+
+    private string[] KillCounterTexts = {
+        "", "{0} Kills", "{1} Enemies Left", "{0} Kills, {1} Enemies Left" 
+    };
 
     // Start is called before the first frame update
     static public GameManager Instance { get; private set; }
@@ -67,15 +71,27 @@ public class GameManager : MonoBehaviour
     public void OnEnemyDie(AttackingEntity _enemy)
     {
         KillCount += 1;
-        foreach (var killCount in killCounts)
-        {
-            killCount.text = $"Kills {KillCount}";
-        }
-
         Enemies.Remove(_enemy);
         if (Enemies.Count == 0)
         {
             OnWaveEnd();
+        }
+        UpdateKillCounters();
+    }
+
+    private void UpdateKillCounters()
+    {
+        foreach (var killCounter in killCounters)
+        {
+            int selector = 0;
+            if (KillCount > 0) {
+                selector |= 1;
+            }
+            if (killCounter.CompareTag("CountsEnemies")) {
+                selector |= 2;
+            }
+            Debug.Log(selector);
+            killCounter.text = string.Format(KillCounterTexts[selector], KillCount, Enemies.Count);
         }
     }
 
@@ -103,6 +119,7 @@ public class GameManager : MonoBehaviour
         else
         {
             StartWave(CurrentWave);
+            UpdateKillCounters();
         }
     }
 
