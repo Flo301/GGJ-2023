@@ -184,7 +184,8 @@ public class GameManager : MonoBehaviour
     private void StartWave(int index)
     {
         Player.transform.position = Vector3.zero;
-        Player.AttackingEntity.HP = Player.AttackingEntity.maxHP;
+        //Player.AttackingEntity.HP = Player.AttackingEntity.maxHP;
+        Player.AttackingEntity.SetHp(Player.AttackingEntity.maxHP);
 
         StartCoroutine(FadeIntroText(WaveData[index].IntroText, 2, 3, 1.5f));
 
