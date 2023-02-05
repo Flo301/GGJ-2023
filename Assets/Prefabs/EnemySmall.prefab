@@ -140,6 +140,7 @@ MonoBehaviour:
     m_Bits: 64
   parent: {fileID: 4826134453608019174}
   debugAttackKey: 0
+  moving: 0
   spread: 4
   movementSpeed: 0.3
   diveSpeed: 0.1
@@ -181,7 +182,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.223
   m_Pitch: 1
   Loop: 0
   Mute: 0

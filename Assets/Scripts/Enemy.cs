@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : AttackingEntity
 {
     private Animator Animator;
@@ -43,6 +44,10 @@ public class Enemy : AttackingEntity
     void Awake()
     {
         Animator = GetComponentInChildren<Animator>();
+        Audio = GetComponent<AudioSource>();
+        Audio.clip = StrongAttackClip;
+        Audio.loop = false;
+        Audio.playOnAwake = false;
     }
 
     void OnTriggerStay(Collider collision)
@@ -53,6 +58,7 @@ public class Enemy : AttackingEntity
         if (Attack())
         {
             Animator.SetTrigger("Strong_Attack");
+            Audio.Play();
         }
     }
 

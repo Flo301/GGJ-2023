@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/TestPixil.unity.meta
 guid: 63ce01d94009d04a6b3e71c4c862431b
+========
+guid: 414f9a9351dade5438f3895b63a6bd87
+folderAsset: yes
+>>>>>>>> a93e38cf709d61c828684fff019eb8d0e12cb877:Assets/Prefabs/sound.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
