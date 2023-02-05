@@ -6508,9 +6508,9 @@ MonoBehaviour:
     WeaponMesh: {fileID: 4931044192788643432}
     attackData:
       Typ: 3
-      Damage: 10
+      Damage: 70
       Range: 2
-      Cooldown: 0.2
+      Cooldown: 0.92
       ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
     uiAttack: {fileID: 0}
   - Name: Flame Thrower
@@ -6519,10 +6519,10 @@ MonoBehaviour:
     WeaponMesh: {fileID: 8489594881860289857}
     attackData:
       Typ: 3
-      Damage: 200
-      Range: 3
-      Cooldown: 0.6
-      ProjectileObj: {fileID: 3255707254374931051, guid: e2d881c8095b3c6838b9cc266a5a9367, type: 3}
+      Damage: 30
+      Range: 0.4
+      Cooldown: 0.2
+      ProjectileObj: {fileID: 3255707254374931051, guid: bb16be2453808887b8c1284556e6351a, type: 3}
     uiAttack: {fileID: 0}
   Ground: {fileID: 0}
 --- !u!1 &7991675956245963212
