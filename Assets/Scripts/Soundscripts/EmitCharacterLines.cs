@@ -44,7 +44,6 @@ public class CharacterLines : MonoBehaviour
     /// </summary>
     void FlippingTheBird()
     {
-        Debug.Log("yeahr");
         Source.clip = FlippingClip;
         Source.Play();
     }
