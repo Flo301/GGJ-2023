@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log($"Collide with {collision.gameObject.name}", collision.gameObject);
         var entity = collision.gameObject.GetComponent<AttackingEntity>();
 
         if (entity != null && (Emitter.attackMask.value & 1 << entity.gameObject.layer) > 0) //Check layer is in layermask

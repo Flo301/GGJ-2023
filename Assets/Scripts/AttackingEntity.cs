@@ -123,9 +123,14 @@ public class AttackingEntity : MonoBehaviour
                     Debug.LogError("Missing Projectile");
                     return false;
                 }
-                var projectile = GameObject.Instantiate(selectedAttack.ProjectileObj, transform.position + transform.forward * 1.5f, Quaternion.identity);
+                var pos = transform.position + transform.forward * 1.5f;
+                pos.y = 1.5f;
+                var projectile = GameObject.Instantiate(selectedAttack.ProjectileObj, pos, Quaternion.identity);
                 projectile.Set(selectedAttack, this);
                 projectile.transform.LookAt(projectile.transform.position + transform.forward);
+                var rot = projectile.transform.rotation.eulerAngles;
+                rot.x = 0;
+                projectile.transform.rotation = Quaternion.Euler(rot);
                 Destroy(projectile.gameObject, selectedAttack.Range);
                 return true;
         }

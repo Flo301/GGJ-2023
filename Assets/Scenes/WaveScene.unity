@@ -2829,6 +2829,38 @@ PrefabInstance:
       propertyPath: AttackData.Array.data[3].uiAttack
       value: 
       objectReference: {fileID: 1241718858}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].isUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[3].isUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[3].attackData.Range
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.Damage
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[3].attackData.Damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[2].attackData.Cooldown
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[3].attackData.Cooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2614282487586835647, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
+      propertyPath: AttackData.Array.data[3].attackData.ProjectileObj
+      value: 
+      objectReference: {fileID: 3255707254374931051, guid: bb16be2453808887b8c1284556e6351a, type: 3}
     - target: {fileID: 6967976175546923497, guid: 744eb92d3c5f787f29bc35490adce9e0, type: 3}
       propertyPath: m_RootOrder
       value: 3
