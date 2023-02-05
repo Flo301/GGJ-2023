@@ -48,9 +48,19 @@ public class Player : MonoBehaviour
         CheckSelectedAttack();
         CheckWeapon();
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Bird"))
         {
             PlayerAnimator.SetTrigger("Flipping Bird");
+        }
+
+        if (Input.GetButtonDown("Thumbs"))
+        {
+            PlayerAnimator.SetBool("Thumbs Up", true);
+        }
+
+        if (Input.GetButtonUp("Thumbs"))
+        {
+            PlayerAnimator.SetBool("Thumbs Up", false);
         }
 
         if (Input.GetButtonDown("Fire1"))
