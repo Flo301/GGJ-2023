@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject ShopScreen;
     public GameObject WaveEndScreen;
     public GameObject GameEndScreen;
+    public GameObject HUD;
     public bool Controller = false;
     public WaveData[] WaveData;
     public ShopItem[] ShopItems;
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
         KillCount = 0;
         Time.timeScale = 1;
 
+        HUD.SetActive(true);
         GameOverScreen.SetActive(false);
         ShopScreen.SetActive(false);
         WaveEndScreen.SetActive(false);
@@ -156,6 +158,7 @@ public class GameManager : MonoBehaviour
         CurrentWave++;
         KillCount = 0;
         ShopScreen.SetActive(false);
+        HUD.SetActive(true);
         if (CurrentWave >= WaveData.Length)
         {
             OnGameFinish();
@@ -194,6 +197,7 @@ public class GameManager : MonoBehaviour
 
     public void OnWaveEnd()
     {
+        HUD.SetActive(false);
         //Make-Money
         var leftHp = (int)Player.AttackingEntity.HP;
         Money += leftHp;
