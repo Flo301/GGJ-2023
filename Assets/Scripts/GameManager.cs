@@ -27,7 +27,14 @@ public class GameManager : MonoBehaviour
     private List<AttackingEntity> Enemies = new List<AttackingEntity>();
 
     private string[] KillCounterTexts = {
-        "", "{0} Kills", "{1} Enemies Left", "{0} Kills, {1} Enemies Left" 
+        /* 000 */ "",
+        /* 001 */ "{0} Kill",
+        /* 010 */ "{0} Kills",
+        /* 011 */ "",
+        /* 100 */ "{1} Enemies Left",
+        /* 101 */ "{0} Kill, {1} Enemies Left",
+        /* 110 */ "{0} Kills, {1} Enemies Left",
+        /* 111 */ ""
     };
 
     // Start is called before the first frame update
@@ -89,13 +96,15 @@ public class GameManager : MonoBehaviour
         foreach (var killCounter in killCounters)
         {
             int selector = 0;
-            if (KillCount > 0) {
+            if (KillCount  == 1) {
                 selector |= 1;
             }
-            if (killCounter.CompareTag("CountsEnemies")) {
+            if (KillCount > 1) {
                 selector |= 2;
             }
-            Debug.Log(selector);
+            if (killCounter.CompareTag("CountsEnemies")) {
+                selector |= 4;
+            }
             killCounter.text = string.Format(KillCounterTexts[selector], KillCount, Enemies.Count);
         }
     }
@@ -154,7 +163,6 @@ public class GameManager : MonoBehaviour
         else
         {
             StartWave(CurrentWave);
-            UpdateKillCounters();
         }
     }
 
@@ -217,6 +225,8 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        UpdateKillCounters();
+        yield return new WaitForEndOfFrame();
     }
 
     private Enemy SpawnOnBorder(Enemy _prefab)
