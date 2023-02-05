@@ -23,5 +23,8 @@ public class ShopItem : MonoBehaviour
             BuyButton.interactable = false;
             BuyButton.GetComponentInChildren<TMP_Text>().text = "Owned";
         }
+        else {
+            BuyButton.interactable = false;
+        }
     }
 }
