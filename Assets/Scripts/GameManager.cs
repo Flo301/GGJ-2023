@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour
         Player = FindObjectOfType<Player>();
     }
 
+    public void OpenCredits() {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void Start()
     {
         StartWave(CurrentWave);
