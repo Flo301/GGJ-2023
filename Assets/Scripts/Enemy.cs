@@ -9,7 +9,7 @@ public class Enemy : AttackingEntity
 
     private float TimeToJump = 10;
 
-    private bool moving = false;
+    public bool moving = false;
 
     public float spread = 4;
 
@@ -19,6 +19,27 @@ public class Enemy : AttackingEntity
     public float diveDistanceMin = 5f;
     public float diveDistanceMax = 15f;
 
+    [Header("Sounds")]
+    /// <summary>
+    /// Source for the Attacking Sounds
+    /// </summary>
+    /// <returns></returns>
+    private AudioSource Audio;
+
+    /// <summary>
+    /// Clip for Strong Attack
+    /// </summary>
+    [SerializeField] private AudioClip StrongAttackClip;
+
+    // Add if Frantic Attack gets used
+    // /// <summary>
+    // /// Clip for Frantic Attack
+    // /// </summary>
+    // [SerializeField] private AudioClip FranticAttackCLip; 
+    
+    /// <summary>
+    /// Seeks out all necessary Component at Awakening of this Instance.
+    /// </summary>
     void Awake()
     {
         Animator = GetComponentInChildren<Animator>();
@@ -28,12 +49,23 @@ public class Enemy : AttackingEntity
     {
         var playerPos = GameManager.Instance.Player.transform.position;
         transform.LookAt(new Vector3(playerPos.x, transform.position.y, playerPos.z));
-        ElapsedTimeSincePlayerContact = 0;
 
         if (Attack())
         {
             Animator.SetTrigger("Strong_Attack");
         }
+    }
+
+    void Harden()
+    {
+        WeaknessData projectileWeakness = getWeakness(EAttackTyp.Close);
+        projectileWeakness.Factor = 1f;
+    }
+
+    void BecomeFireResistant()
+    {
+        WeaknessData projectileWeakness = getWeakness(EAttackTyp.Projectile);
+        projectileWeakness.Factor = 0.5f;
     }
 
     override protected void Update()
@@ -82,17 +114,5 @@ public class Enemy : AttackingEntity
         }
         moving = false;
         yield return null;
-    }
-
-    void Harden()
-    {
-        WeaknessData projectileWeakness = getWeakness(EAttackTyp.Close);
-        projectileWeakness.Factor = 1f;
-    }
-
-    void BecomeFireResistant()
-    {
-        WeaknessData projectileWeakness = getWeakness(EAttackTyp.Projectile);
-        projectileWeakness.Factor = 0.5f;
     }
 }
