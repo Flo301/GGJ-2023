@@ -96,13 +96,16 @@ public class GameManager : MonoBehaviour
         foreach (var killCounter in killCounters)
         {
             int selector = 0;
-            if (KillCount  == 1) {
+            if (KillCount == 1)
+            {
                 selector |= 1;
             }
-            if (KillCount > 1) {
+            if (KillCount > 1)
+            {
                 selector |= 2;
             }
-            if (killCounter.CompareTag("CountsEnemies")) {
+            if (killCounter.CompareTag("CountsEnemies"))
+            {
                 selector |= 4;
             }
             killCounter.text = string.Format(KillCounterTexts[selector], KillCount, Enemies.Count);
@@ -135,8 +138,8 @@ public class GameManager : MonoBehaviour
 
     public void BuyItem(string item)
     {
-        var index = Player.AttackData.FindIndex((attack) => attack.Name == item);
-        var playerAttack = Player.AttackData[index];
+        var index = Player.Attacks.FindIndex((attack) => attack.Name == item);
+        var playerAttack = Player.Attacks[index];
 
         if (Money >= playerAttack.Price && !playerAttack.isUnlocked)
         {
@@ -144,7 +147,8 @@ public class GameManager : MonoBehaviour
             Money -= playerAttack.Price;
             MoneyText.text = $"Money: {Money}";
 
-            Player.AttackData[index] = playerAttack;
+            Player.Attacks[index] = playerAttack;
+            Player.ChangeWeapon(true);
 
             UpdateShopItems();
         }
@@ -170,7 +174,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < ShopItems.Length; i++)
         {
-            var attack = Player.AttackData[i + 1];
+            var attack = Player.Attacks[i + 1];
             ShopItems[i].SetPlayerAttack(attack, Money);
         }
     }

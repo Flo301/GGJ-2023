@@ -107,7 +107,7 @@ public class AttackingEntity : MonoBehaviour
         if (attackCooldown > 0) return false;
         attackCooldown = selectedAttack.Cooldown;
 
-        Debug.Log($"{transform.name} => DoAttack", gameObject);
+        //Debug.Log($"{transform.name} => DoAttack", gameObject);
 
         RaycastHit[] hits = null;
         switch (selectedAttack.Typ)
