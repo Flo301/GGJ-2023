@@ -28,6 +28,16 @@ public static class SoundEventManager
     /// <summary>
     /// Flipping Sound Event.
     /// </summary>
+    public delegate void SteppingSound(float delay);
+
+    /// <summary>
+    /// Attacking Sound Event.
+    /// </summary>
+    public static event SteppingSound OnStep;
+    
+    /// <summary>
+    /// Flipping Sound Event.
+    /// </summary>
     public delegate void RapidFireSound(bool status);
 
     /// <summary>
@@ -45,6 +55,10 @@ public static class SoundEventManager
     /// </summary>
     public static void EmitFlipping() => OnFlipping();
     
+    /// <summary>
+    /// Emit Stepping Sound
+    /// </summary>
+    public static void EmitStepping(float delay) => OnStep(delay);
     
     /// <summary>
     /// Emit RepidFire Sound

@@ -10,7 +10,7 @@ public class Enemy : AttackingEntity
 
     private float TimeToJump = 10;
 
-    private bool moving = false;
+    public bool moving = false;
 
     public float spread = 4;
 
