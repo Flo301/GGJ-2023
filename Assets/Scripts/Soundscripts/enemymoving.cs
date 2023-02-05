@@ -14,7 +14,7 @@ public class enemymoving : MonoBehaviour
     [SerializeField] private AudioClip Clip;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ThisEnemy = GetComponent<Enemy>();
         Audio.GetComponent<AudioSource>();
