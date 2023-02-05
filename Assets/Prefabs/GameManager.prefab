@@ -58,8 +58,26 @@ MonoBehaviour:
   WaveData:
   - IntroText: The forest welcomes you!
     Enemies:
-    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
+      Amount: 5
+  - IntroText: A growl in the dark!
+    Enemies:
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
       Amount: 10
+    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      Amount: 2
+  - IntroText: You must survive!
+    Enemies:
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
+      Amount: 20
+    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      Amount: 5
+  - IntroText: They are coming!
+    Enemies:
+    - Prefab: {fileID: 5890630699012839504, guid: cb855fb9852df3631aac50557d366744, type: 3}
+      Amount: 30
+    - Prefab: {fileID: 5890630699012839504, guid: 2ca28c2df4029e4f6ad78fc86e68e877, type: 3}
+      Amount: 12
   ShopItems:
   - {fileID: 0}
   - {fileID: 0}
