@@ -152,11 +152,11 @@ public class Player : MonoBehaviour
 
         foreach (var attack in AttackData)
         {
-            Image img = attack.uiAttack.GetComponent<Image>();
-            if (null != img)
-            {
-                img.color = AttackBaseColor;
-            }
+            // Image img = attack.uiAttack.GetComponent<Image>();
+            // if (null != img)
+            // {
+            //     img.color = AttackBaseColor;
+            // }
 
             if (attack.isUnlocked)
             {
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                attack.uiAttack.GetComponent<Image>().color = new Color32(165, 0, 0, 255);
+                // attack.uiAttack.GetComponent<Image>().color = new Color32(165, 0, 0, 255);
             }
 
             attack.WeaponMesh.SetActive(false);
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
 
         AttackingEntity.selectedAttack = selectedAttack.attackData;
         selectedAttack.WeaponMesh.SetActive(true);
-        selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
+        // selectedAttack.uiAttack.GetComponent<Image>().color = new Color32(46, 155, 62, 190);
 
         SpotLight.range = selectedAttack.attackData.Range;
     }
