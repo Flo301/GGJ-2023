@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : AttackingEntity
@@ -17,6 +16,8 @@ public class Enemy : AttackingEntity
     public float movementSpeed = 0.3f;
 
     public float diveSpeed = 0.1f;
+    public float diveDistanceMin = 5f;
+    public float diveDistanceMax = 15f;
 
     void Awake()
     {
@@ -63,7 +64,7 @@ public class Enemy : AttackingEntity
         timeFactors[0] = diveSpeed;
         vectors[1] = new Vector3(vectors[0].x, -8, vectors[0].z);
         timeFactors[1] = movementSpeed;
-        vectors[2] = vectors[1] + ((playerPos - vectors[1]).normalized * Random.Range(3, 5));
+        vectors[2] = vectors[1] + ((playerPos - vectors[1]).normalized * Random.Range(diveDistanceMin, diveDistanceMax));
         vectors[2].y = -8;
         timeFactors[2] = diveSpeed;
         vectors[3] = new Vector3(vectors[2].x, 0, vectors[2].z);
