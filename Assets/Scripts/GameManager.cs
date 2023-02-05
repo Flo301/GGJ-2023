@@ -55,42 +55,6 @@ public class GameManager : MonoBehaviour
         StartWave(CurrentWave);
     }
 
-    public void RestartGame()
-    {
-        KillCount = 0;
-        Time.timeScale = 1;
-
-        GameOverScreen.SetActive(false);
-        ShopScreen.SetActive(false);
-        WaveEndScreen.SetActive(false);
-        GameEndScreen.SetActive(false);
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
-    public void OnPlayerDie()
-    {
-        //GAME_OVER
-        Time.timeScale = 0;
-        GameOverScreen.SetActive(true);
-    }
-
-    public void OnEnemyDie(AttackingEntity _enemy)
-    {
-        KillCount += 1;
-        Enemies.Remove(_enemy);
-        if (Enemies.Count == 0)
-        {
-            OnWaveEnd();
-        }
-        UpdateKillCounters();
-    }
-
     private void UpdateKillCounters()
     {
         foreach (var killCounter in killCounters)
@@ -112,18 +76,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnWaveEnd()
+    #region GameStates
+    public void QuitGame()
     {
-        //Make-Money
-        var leftHp = (int)Player.AttackingEntity.HP;
-        Money += leftHp;
-        MoneyText.text = $"Money: {Money}";
-
-        WaveEndScreen.SetActive(true);
-
-        StartCoroutine(OpenShopAfterDelay());
+        Application.Quit();
     }
 
+    public void OnPlayerDie()
+    {
+        //GAME_OVER
+        Time.timeScale = 0;
+        GameOverScreen.SetActive(true);
+    }
+
+    private void OnGameFinish()
+    {
+        GameEndScreen.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        KillCount = 0;
+        Time.timeScale = 1;
+
+        GameOverScreen.SetActive(false);
+        ShopScreen.SetActive(false);
+        WaveEndScreen.SetActive(false);
+        GameEndScreen.SetActive(false);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+    #endregion
+
+    #region Shop
     IEnumerator OpenShopAfterDelay()
     {
         yield return new WaitForSeconds(5f);
@@ -155,6 +140,17 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void UpdateShopItems()
+    {
+        for (int i = 0; i < ShopItems.Length; i++)
+        {
+            var attack = Player.Attacks[i + 1];
+            ShopItems[i].SetPlayerAttack(attack, Money);
+        }
+    }
+    #endregion
+
+    #region  WaveManagement
     public void StartNextWave()
     {
         CurrentWave++;
@@ -170,15 +166,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateShopItems()
+    public void OnEnemyDie(AttackingEntity _enemy)
     {
-        for (int i = 0; i < ShopItems.Length; i++)
+        KillCount += 1;
+        Enemies.Remove(_enemy);
+        if (Enemies.Count == 0)
         {
-            var attack = Player.Attacks[i + 1];
-            ShopItems[i].SetPlayerAttack(attack, Money);
+            OnWaveEnd();
         }
+        UpdateKillCounters();
     }
-
     private void StartWave(int index)
     {
         Player.transform.position = Vector3.zero;
@@ -195,9 +192,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnGameFinish()
+    public void OnWaveEnd()
     {
-        GameEndScreen.SetActive(true);
+        //Make-Money
+        var leftHp = (int)Player.AttackingEntity.HP;
+        Money += leftHp;
+        MoneyText.text = $"Money: {Money}";
+
+        WaveEndScreen.SetActive(true);
+
+        StartCoroutine(OpenShopAfterDelay());
     }
 
     IEnumerator FadeIntroText(string text, float fadeIn, float stay, float fadeOut)
@@ -258,4 +262,5 @@ public class GameManager : MonoBehaviour
         enemy.transform.LookAt(Player.transform.position);
         return enemy;
     }
+    #endregion
 }

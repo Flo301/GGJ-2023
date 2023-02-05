@@ -139,6 +139,11 @@ MonoBehaviour:
     m_Bits: 64
   parent: {fileID: 4826134453608019174}
   debugAttackKey: 0
+  spread: 4
+  movementSpeed: 0.3
+  diveSpeed: 0.1
+  diveDistanceMin: 10
+  diveDistanceMax: 2
 --- !u!136 &317447897424447421
 CapsuleCollider:
   m_ObjectHideFlags: 0
