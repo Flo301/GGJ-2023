@@ -55,7 +55,7 @@ public class AttackingEntity : MonoBehaviour
         SetHp(HP - value);
     }
 
-    private void SetHp(float hp)
+    public void SetHp(float hp)
     {
         HP = Mathf.Min(hp, maxHP);
 
